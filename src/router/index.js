@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import FormEditor from '@/views/FormEditor'
+import FormEditor from '@/views/formEditor'
 
 Vue.use(Router)
 
