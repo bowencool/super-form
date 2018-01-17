@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-menu mode="horizontal" :default-active="$route.fullPath" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" router>
+    <el-menu mode="horizontal" :default-active="$route.fullPath" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" router menu-trigger="click">
       <el-submenu index="/editor">
         <template slot="title">编辑器</template>
         <el-menu-item index="/editor/query-form">查询表单</el-menu-item>
@@ -20,7 +20,11 @@ export default {
 </script>
 
 <style lang="less">
-body {
+html,
+body,
+#app,
+.el-container {
   margin: 0;
+  height: 100%;
 }
 </style>
