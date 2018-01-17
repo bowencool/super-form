@@ -5,6 +5,7 @@ import FormEditor from '@/views/formEditor'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/form-editor',
