@@ -1,8 +1,9 @@
-<template>
-  <router-view></router-view>
+<template lang="pug">
+  el-container
+    router-view(name="aside")
+    router-view(name="main")
 </template>
 
 <script>
-// todo functional
 export default {}
 </script>
