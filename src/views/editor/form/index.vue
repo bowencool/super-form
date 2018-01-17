@@ -3,11 +3,11 @@
     el-aside(style="background-color: rgb(238, 241, 246)")
       el-button(v-for="(item,i) in LIST" :key="item.label" @click="addFormItem(item)") {{item.label}}
     el-main
-      fake-form(:dynamicForm="currentForm")
+      //- fake-form(:dynamicForm="currentForm")
 </template>
 
 <script>
-import FakeForm from './main/fake-form'
+// import FakeForm from './main/fake-form'
 const LIST = [
   {
     type: 'input',
@@ -20,7 +20,7 @@ const LIST = [
 ]
 
 export default {
-  components: { FakeForm },
+  // components: { FakeForm },
   data() {
     return {
       LIST,

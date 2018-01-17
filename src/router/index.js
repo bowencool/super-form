@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import FormEditor from '@/views/formEditor'
+import Preview from '@/views/preview/preview'
+import Editor from '@/views/editor'
+import FormEditor from '@/views/editor/form'
 
 Vue.use(Router)
 
@@ -8,18 +10,23 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/form-editor',
-      name: 'FormEditor',
-      component: FormEditor
+      path: '/editor',
+      redirect: '/editor/form',
+      component: Editor,
+      children: [
+        {
+          path: 'form',
+          component: FormEditor
+        },
+      ],
     },
-    // {
-    //   path: '/form-editor',
-    //   name: 'FormEditor',
-    //   component: FormEditor
-    // },
     {
-      path: '*',
-      redirect: '/form-editor'
-    },
+      path: '/preview',
+      component: Preview,
+    }
+    // {
+    //   path: '*',
+    //   redirect: '/editor/form'
+    // },
   ]
 })
