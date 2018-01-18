@@ -1,7 +1,14 @@
 <template lang="pug">
-  el-main editor-form-main
+  el-main
+    pre {{currentForm}}
 </template>
 
 <script>
-  export default {}
+export default {
+  computed: {
+    currentForm() {
+      return this.$store.state.forms[this.$route.params.fid]
+    }
+  }
+}
 </script>

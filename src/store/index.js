@@ -1,15 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import getters from './getters'
-import form1 from './modules/form1' // 顶部查询表单
+import forms from './modules/forms' // 顶部查询表单
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    form1,
+    forms,
   },
-  getters,
 })
 
 export default store
