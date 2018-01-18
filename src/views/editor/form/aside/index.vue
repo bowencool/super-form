@@ -11,8 +11,7 @@
         dynamic-form(:dynamicForm="FORM_G" v-model="currentForm")
 
       el-tab-pane(label="组件配置" name="item-config")
-        pre {{$route.params}}
-        pre {{$route.query}}
+        pre {{selectedItem}}
 
       el-tab-pane(label="查看JSON" name="source")
         pre {{currentForm}}
@@ -39,6 +38,9 @@ export default {
       set(newV) {
         this.$store.commit('FORM_UPDATE_WITH_FID_G', { fid: this.$route.params.fid, newV })
       }
+    },
+    selectedItem() {
+      return this.currentForm.formItemList.find(item => item.key === this.$store.state.itemKey)
     }
   },
   methods: {
