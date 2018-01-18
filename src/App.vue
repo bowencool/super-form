@@ -32,4 +32,9 @@ body,
 .el-header {
   padding: 0;
 }
+.clear-fix:after {
+  display: table;
+  clear: both;
+  content: ' ';
+}
 </style>

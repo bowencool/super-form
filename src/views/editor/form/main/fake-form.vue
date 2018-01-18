@@ -2,12 +2,12 @@
   <el-form class="dynamic-form fake-form" :inline="dynamicForm.inline" :label-position="dynamicForm.labelPosition" :label-width="dynamicForm.labelWidth" :size='dynamicForm.size'>
 
     <draggable v-model="dynamicForm.formItemList">
-      <!-- <span> todo block时失效-->
-        <!-- next 加一个删除按钮 -->
 
-        <fake-form-item v-for="(item,i) in dynamicForm.formItemList" :key="item.key" :class="{'selected': $store.state.itemKey===item.key}" @click.native="select(item.key)" :item="item" :style="{'min-width':columnMinWidth}"></fake-form-item>
+      <div v-for="(item,i) in dynamicForm.formItemList" :key="item.key" class="draggable" :class="{'selected': $store.state.itemKey===item.key}" @click="select(item.key)">
+        <fake-form-item :item="item"></fake-form-item>
+        <i class="el-icon-delete" @click.stop="deleteItem(i)"></i>
+      </div>
 
-      <!-- </span> -->
     </draggable>
 
   </el-form>
@@ -23,57 +23,59 @@ export default {
       type: Object,
       required: true
     },
-    columnMinWidth: {
-      type: String
-    }
   },
   methods: {
     select(key) {
       this.$store.commit('SELECT_ITEM', key)
+    },
+    deleteItem(i) {
+      this.dynamicForm.formItemList.splice(i, 1)
     }
   },
 }
 </script>
 
 <style lang="less">
-.dynamic-form.fake-form {
-  // .block {
-  //   padding-right: 10%;
-  // }
-
-  .el-form-item {
+.fake-form {
+  .draggable {
+    position: relative;
     padding: 5px;
     cursor: move;
+
+    i[class^="el-icon"] {
+      display: none;
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      cursor: pointer;
+      color: red;
+    }
+
+    &:hover {
+      i[class^="el-icon"] {
+        display: inline;
+      }
+    }
+  }
+
+  .selected {
+    border: 1px dashed #409eff;
+    background-color: #add8e62b;
+    border-radius: 3px;
+  }
+
+  .el-form-item {
 
     label,
     input {
       cursor: move;
     }
-
-    &.selected {
-      border: 1px dashed #409eff;
-      border-radius: 3px;
-    }
-    //     display: inline-flex;
-    //     // margin-right: 0;
-    //     // padding-left: 10px;
-
-    // .el-form-item__content {
-    //       flex: 1;
-    //       display: inline-flex;
-    //       align-items: center;
-
-    //       .el-slider {
-    //         width: 100%;
-    // }
   }
 
-  //     .el-date-editor.el-input,
-  //     .el-date-editor.el-input__inner,
-  //     .el-select,
-  //     .el-cascader {
-  //       width: 100%;
-  //     }
-  //   }
+  &.el-form--inline {
+    .draggable {
+      display: inline-block;
+    }
+  }
 }
 </style>
