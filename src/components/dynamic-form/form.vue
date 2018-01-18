@@ -4,7 +4,7 @@
     <!-- 这里一定不能用$attrs、$listeners, 因为这里要绑定key-->
     <!-- 但是又不能修改value，因为value是props -->
     <!-- 所以考虑拆分这里的v-model -->
-    <dynamic-form-item v-for="(item,i) in dynamicForm.formList" :key="i" :item="item" :value="value[item.key]" @input="handleInput($event, item.key)" :style="{'min-width':columnMinWidth}"></dynamic-form-item>
+    <dynamic-form-item v-for="(item,i) in dynamicForm.formItemList" :key="i" :item="item" :value="value[item.key]" @input="handleInput($event, item.key)" :style="{'min-width':columnMinWidth}"></dynamic-form-item>
 
     <slot/>
 
@@ -34,7 +34,7 @@ export default {
     setDefaultValue() {
       const formData = { ...this.value }
       // 设置默认值
-      this.dynamicForm.formList.forEach(item => {
+      this.dynamicForm.formItemList.forEach(item => {
         if (formData[item.key] === undefined || formData[item.key] === null) {
           formData[item.key] = item.value
         }
@@ -52,7 +52,7 @@ export default {
   // watch: {
   //   dynamicForm(nnew, old) {
   //     if (this.$refs.form) this.$refs.form.clearValidate()
-  //     old.formList.forEach(item => {
+  //     old.formItemList.forEach(item => {
   //       delete this.value[item.key]
   //     })
   //     this.setDefaultValue()
@@ -62,30 +62,30 @@ export default {
 </script>
 
 <style lang="less">
-.dynamic-form.el-form--inline {
+// .dynamic-form.el-form--inline {
 
-  // .block {
-  //   padding-right: 10%;
-  // }
+//   // .block {
+//   //   padding-right: 10%;
+//   // }
 
-  .el-form-item {
-    display: inline-flex;
-    // margin-right: 0;
-    // padding-left: 10px;
+//   .el-form-item {
+//     display: inline-flex;
+//     // margin-right: 0;
+//     // padding-left: 10px;
 
-    .el-form-item__content {
-      flex: 1;
-      display: inline-flex;
-      align-items: center;
+//     .el-form-item__content {
+//       flex: 1;
+//       display: inline-flex;
+//       align-items: center;
 
-      .el-slider {
-        width: 100%
-      }
-    }
+//       .el-slider {
+//         width: 100%
+//       }
+//     }
 
-    .el-date-editor.el-input, .el-date-editor.el-input__inner, .el-select, .el-cascader {
-      width: 100%;
-    }
-  }
-}
+//     .el-date-editor.el-input, .el-date-editor.el-input__inner, .el-select, .el-cascader {
+//       width: 100%;
+//     }
+//   }
+// }
 </style>

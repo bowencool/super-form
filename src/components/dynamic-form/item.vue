@@ -77,7 +77,6 @@ export default {
 
       rules.forEach(rule => {
         if (rule.sql) {
-          // console.log(rule.sql)
           const validator = (rule2, value, callback) => {
             this.$post('/validate', { key: rule2.field, value, sql: rule.sql.replace(/{key}/ig, rule2.field) })
               .then(res => {

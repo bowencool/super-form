@@ -4,9 +4,9 @@ import router from './router'
 import store from './store'
 import Element from 'element-ui'
 import '@/components/icon-svg'
+import '@/components/dynamic-form'
 
 Vue.use(Element)
-// Vue.component('icon-svg', IconSvg)
 
 Vue.config.productionTip = false
 

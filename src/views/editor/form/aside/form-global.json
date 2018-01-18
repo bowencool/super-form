@@ -1,0 +1,53 @@
+{
+  "inline": true,
+  "labelPosition": "right",
+  "labelWidth": "75px",
+  "size": "mini",
+  "statusIcon": true,
+  "formItemList": [
+    {
+      "type": "switch",
+      "label": "内联模式",
+      "key": "inline",
+      "value": false
+    },
+    {
+      "type": "input",
+      "subtype": "text",
+      "label": "标签宽度",
+      "key": "labelWidth",
+      "value": "",
+      "placeholder": "标签宽度(可不填)"
+    },
+    {
+      "type": "radio",
+      "label": "标签对齐",
+      "key": "labelPosition",
+      "value": "right",
+      "button": true,
+      "options": {
+        "left": "左对齐",
+        "top": "顶部对齐",
+        "right": "右对齐"
+      }
+    },
+    {
+      "type": "select",
+      "label": "尺寸",
+      "key": "size",
+      "value": "small",
+      "options": {
+        "": "大",
+        "medium": "中等",
+        "small": "小",
+        "mini": "迷你"
+      }
+    },
+    {
+      "type": "switch",
+      "label": "验证图标",
+      "key": "statusIcon",
+      "value": true
+    }
+  ]
+}

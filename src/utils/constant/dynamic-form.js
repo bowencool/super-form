@@ -1,4 +1,5 @@
 /* eslint-disable */
+// todo
 // const options = [
 //   {
 //     "value": 1,
@@ -27,7 +28,7 @@ export default {
   "labelWidth": '90px', // 标签宽度
   // "size": 'small', // 尺寸
   "statusIcon": true, // 显示验证图标
-  "formList": [
+  "formItemList": [
     {
       "type": 'input', // 必要, String
       "subtype": 'text',

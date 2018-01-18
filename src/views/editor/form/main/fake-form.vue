@@ -1,7 +1,7 @@
 <template>
   <el-form class="dynamic-form" :inline="dynamicForm.inline" :label-position="dynamicForm.labelPosition" :label-width="dynamicForm.labelWidth" :size='dynamicForm.size'>
 
-    <fake-form-item v-for="(item,i) in dynamicForm.formList" :key="i" :item="item" :style="{'min-width':columnMinWidth}"></fake-form-item>
+    <fake-form-item v-for="(item,i) in dynamicForm.formItemList" :key="i" :item="item" :style="{'min-width':columnMinWidth}"></fake-form-item>
 
     <slot/>
 
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import FakeFormItem from './fake-item'
+import FakeFormItem from './fake-form-item'
 export default {
   components: { FakeFormItem },
   props: {
@@ -49,32 +49,32 @@ export default {
 </script>
 
 <style lang="less">
-.dynamic-form.el-form--inline {
-  // .block {
-  //   padding-right: 10%;
-  // }
+// .dynamic-form.el-form--inline {
+//   // .block {
+//   //   padding-right: 10%;
+//   // }
 
-  .el-form-item {
-    display: inline-flex;
-    // margin-right: 0;
-    // padding-left: 10px;
+//   .el-form-item {
+//     display: inline-flex;
+//     // margin-right: 0;
+//     // padding-left: 10px;
 
-    .el-form-item__content {
-      flex: 1;
-      display: inline-flex;
-      align-items: center;
+//     .el-form-item__content {
+//       flex: 1;
+//       display: inline-flex;
+//       align-items: center;
 
-      .el-slider {
-        width: 100%;
-      }
-    }
+//       .el-slider {
+//         width: 100%;
+//       }
+//     }
 
-    .el-date-editor.el-input,
-    .el-date-editor.el-input__inner,
-    .el-select,
-    .el-cascader {
-      width: 100%;
-    }
-  }
-}
+//     .el-date-editor.el-input,
+//     .el-date-editor.el-input__inner,
+//     .el-select,
+//     .el-cascader {
+//       width: 100%;
+//     }
+//   }
+// }
 </style>
