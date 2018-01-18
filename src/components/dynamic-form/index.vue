@@ -1,5 +1,5 @@
 <template>
-  <el-form class="dynamic-form" :inline="dynamicForm.inline" :model="value" :label-position="dynamicForm.labelPosition" :label-width="dynamicForm.labelWidth" :size='dynamicForm.size'>
+  <el-form class="dynamic-form" :inline="dynamicForm.inline" :model="value" :label-position="dynamicForm.labelPosition" :label-width="dynamicForm.labelWidth" :size='dynamicForm.size' :status-icon="dynamicForm.statusIcon">
 
     <!-- 这里一定不能用$attrs、$listeners, 因为这里要绑定key-->
     <!-- 但是又不能修改value，因为value是props -->
@@ -12,9 +12,7 @@
 </template>
 
 <script>
-import DynamicFormItem from './item'
 export default {
-  components: { DynamicFormItem },
   props: {
     dynamicForm: {
       type: Object,
@@ -31,23 +29,35 @@ export default {
   methods: {
     handleInput(val, key) {
       // 这里element-ui没有上报event，直接就是value了
-      this.value[key] = val
-      this.$emit('input', { ...this.value })
+      this.$emit('input', { ...this.value, [key]: val })
     },
     setDefaultValue() {
+      const formData = { ...this.value }
       // 设置默认值
       this.dynamicForm.formList.forEach(item => {
-        if (this.value[item.key] === undefined) this.value[item.key] = item.value
+        if (formData[item.key] === undefined || formData[item.key] === null) {
+          formData[item.key] = item.value
+        }
+        // if ((item.type === 'cascader' || (item.type === 'select' && item.multiple)) &&
+        //   (typeof formData[item.key] === 'string')) {
+        //   formData[item.key] = formData[item.value].split(',')
+        // }
       })
-      this.$emit('input', { ...this.value })
+      this.$emit('input', { ...formData })
     }
   },
-  created() {
+  mounted() {
     this.setDefaultValue()
   },
-  watch: {
-    dynamicForm: 'setDefaultValue'
-  }
+  // watch: {
+  //   dynamicForm(nnew, old) {
+  //     if (this.$refs.form) this.$refs.form.clearValidate()
+  //     old.formList.forEach(item => {
+  //       delete this.value[item.key]
+  //     })
+  //     this.setDefaultValue()
+  //   }
+  // }
 }
 </script>
 

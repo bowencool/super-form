@@ -18,7 +18,7 @@ export default {
     prepend: {
       type: String
     },
-    decimal: {
+    decimal1: {
       type: Number
     },
     min: {
@@ -36,7 +36,7 @@ export default {
   methods: {
     handleInput(value) {
       clearTimeout(this.timer)
-      this.timer = setTimeout(() => { this.updateValue(value) }, 1000)
+      this.timer = setTimeout(() => { this.updateValue(value) }, 500)
     },
     updateValue(valueStr) {
       let result = this.parse(valueStr, this.value)
@@ -60,8 +60,8 @@ export default {
       }, 0)
     },
     format(number) {
-      if (this.decimal === undefined) return number
-      return (Math.trunc(number * 1000000000000) / 1000000000000).toFixed(this.decimal)
+      if (this.decimal1 === undefined) return number
+      return (Math.trunc(number * 1000000000000) / 1000000000000).toFixed(this.decimal1)
     },
     parse(newString, oldNumber) {
       var CleanParse = function (value) {
