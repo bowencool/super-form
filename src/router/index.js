@@ -18,7 +18,7 @@ export default new Router({
       component: Editor,
       children: [
         {
-          path: 'form/:fid',
+          path: 'form/:fid/:itemkey?',
           components: {
             aside: EditorFormAside,
             main: EditorFormMain,

@@ -1,13 +1,6 @@
-<style>
-.block {
-  display: block !important;
-  display: flex !important;
-}
-</style>
-
 <template>
   <!-- todo functional -->
-  <el-form-item :label="item.label" :class="{'block':item.block}">
+  <el-form-item :label="item.label">
 
     <el-input v-if="item.type==='input'" readonly :placeholder="item.placeholder" :autosize="item.autosize"></el-input>
 

@@ -10,7 +10,9 @@
       el-tab-pane(label="全局配置" name="global-config")
         dynamic-form(:dynamicForm="FORM_G" v-model="currentForm")
 
-      el-tab-pane(label="组件配置" name="item-config") some form
+      el-tab-pane(label="组件配置" name="item-config")
+        pre {{$route.params}}
+        pre {{$route.query}}
 
       el-tab-pane(label="查看JSON" name="source")
         pre {{currentForm}}
@@ -19,12 +21,13 @@
 <script>
 import FORM_G from './form-global.json'
 import { DYNAMIC_FORM } from '@/utils/constant'
-const { formItemList: LIST } = DYNAMIC_FORM
+import guid from '@/utils/guid'
+
 export default {
   data() {
     return {
       activeName: 'items-list',
-      LIST,
+      LIST: DYNAMIC_FORM.formItemList,
       FORM_G,
     }
   },
@@ -40,7 +43,7 @@ export default {
   },
   methods: {
     addItem(item) {
-      this.currentForm.formItemList.push(item)
+      this.currentForm.formItemList.push({ ...item, key: guid() })
     }
   }
 }

@@ -1,80 +1,76 @@
 <template>
-  <el-form class="dynamic-form" :inline="dynamicForm.inline" :label-position="dynamicForm.labelPosition" :label-width="dynamicForm.labelWidth" :size='dynamicForm.size'>
+  <el-form class="dynamic-form fake-form" :inline="dynamicForm.inline" :label-position="dynamicForm.labelPosition" :label-width="dynamicForm.labelWidth" :size='dynamicForm.size'>
 
-    <fake-form-item v-for="(item,i) in dynamicForm.formItemList" :key="i" :item="item" :style="{'min-width':columnMinWidth}"></fake-form-item>
+    <draggable v-model="dynamicForm.formItemList">
 
-    <slot/>
+      <fake-form-item v-for="(item,i) in dynamicForm.formItemList" :key="item.key" @click.native="select(item.key)" :item="item" :class="{'selected': $route.params.itemkey===item.key}" :style="{'min-width':columnMinWidth}"></fake-form-item>
+
+    </draggable>
 
   </el-form>
 </template>
 
 <script>
+import Draggable from 'vuedraggable'
 import FakeFormItem from './fake-form-item'
 export default {
-  components: { FakeFormItem },
+  components: { FakeFormItem, Draggable },
   props: {
     dynamicForm: {
       type: Object,
       required: true
     },
-    // value: {
-    //   type: Object,
-    //   required: true
-    // },
     columnMinWidth: {
       type: String
     }
   },
   methods: {
-    // handleInput(val, key) {
-    //   // 这里element-ui没有上报event，直接就是value了
-    //   this.value[key] = val
-    //   this.$emit('input', { ...this.value })
-    // },
-    // setDefaultValue() {
-    //   // 设置默认值
-    //   this.dynamicForm.formList.forEach(item => {
-    //     if (this.value[item.key] === undefined) this.value[item.key] = item.value
-    //   })
-    //   this.$emit('input', { ...this.value })
-    // }
+    select(key) {
+      this.$router.push(`/editor/form/${this.$route.params.fid}/${key}`)
+    }
   },
-  // created() {
-  // this.setDefaultValue()
-  // },
-  // watch: {
-  //   dynamicForm: 'setDefaultValue'
-  // }
 }
 </script>
 
 <style lang="less">
-// .dynamic-form.el-form--inline {
-//   // .block {
-//   //   padding-right: 10%;
-//   // }
+.dynamic-form.fake-form {
+  // .block {
+  //   padding-right: 10%;
+  // }
 
-//   .el-form-item {
-//     display: inline-flex;
-//     // margin-right: 0;
-//     // padding-left: 10px;
+  .el-form-item {
+    padding: 5px;
+    cursor: move;
 
-//     .el-form-item__content {
-//       flex: 1;
-//       display: inline-flex;
-//       align-items: center;
+    label,
+    input {
+      cursor: move;
+    }
 
-//       .el-slider {
-//         width: 100%;
-//       }
-//     }
+    &.selected {
+      border: 1px dashed orangered;
+      border-radius: 3px;
+    }
+    //     display: inline-flex;
+    //     // margin-right: 0;
+    //     // padding-left: 10px;
 
-//     .el-date-editor.el-input,
-//     .el-date-editor.el-input__inner,
-//     .el-select,
-//     .el-cascader {
-//       width: 100%;
-//     }
-//   }
-// }
+    // .el-form-item__content {
+    //       flex: 1;
+    //       display: inline-flex;
+    //       align-items: center;
+
+    //       .el-slider {
+    //         width: 100%;
+    // }
+  }
+
+  //     .el-date-editor.el-input,
+  //     .el-date-editor.el-input__inner,
+  //     .el-select,
+  //     .el-cascader {
+  //       width: 100%;
+  //     }
+  //   }
+}
 </style>
