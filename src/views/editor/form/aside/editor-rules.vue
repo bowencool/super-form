@@ -24,7 +24,13 @@
     div
       el-checkbox(:value="valid3.enable" @input="handleValid3({enable:$event})") 正则验证(暂不支持flag)
     div(v-show="valid3.enable")
+      //- todo 添加多条正则
       el-input(size="mini" :value="valid3.pattern" @input="handleValid3({pattern:$event})")
+
+    div
+      el-checkbox(:value="valid4.enable" @input="handleValid4({enable:$event})") SQL验证
+    div(v-show="valid4.enable")
+      el-input(size="mini" :value="valid4.sql" @input="handleValid4({sql:$event})")
 </template>
 
 <script>
@@ -84,6 +90,26 @@ export default {
       }
       this.valid3 = { enable, pattern }
     },
+    handleValid4({ enable = this.valid4.enable, sql = this.valid4.sql }) {
+      const ruleIndex = this.itemRules.findIndex(r => r.sql !== undefined)
+      if (enable) {
+        // 勾选或者修改数值
+        const newRule = { sql, message: 'sql验证失败', trigger: 'blur' }
+
+        if (ruleIndex === -1) {
+          // 勾选操作
+          this.itemRules.push(newRule)
+        } else {
+          // 修改操作
+          this.itemRules[ruleIndex] = newRule
+          this.$emit('update:item-rules', [...this.itemRules])
+        }
+      } else {
+        // 只能是取消勾选
+        ruleIndex > -1 && this.itemRules.splice(ruleIndex, 1)
+      }
+      this.valid4 = { enable, sql }
+    },
   },
   data() {
     // 从已有数据中读取初始值
@@ -106,6 +132,13 @@ export default {
       pattern: this.itemRules[v3idx].pattern,
     } : { enable: false, pattern: '' }
 
+    // SQL
+    const v4idx = this.itemRules.findIndex(r => r.sql !== undefined)
+    const v4 = v4idx > -1 ? {
+      enable: true,
+      sql: this.itemRules[v4idx].sql,
+    } : { enable: false, sql: '' }
+
     return {
       // 是否必填
       valid1: v1idx > -1,
@@ -113,6 +146,8 @@ export default {
       valid2: v2,
       // 正则
       valid3: v3,
+      // SQL
+      valid4: v4,
     }
   },
   props: {
