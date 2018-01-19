@@ -23,18 +23,18 @@ const options = {
 }
 export default {
   // "title": '', // 暂时没用到
-  "inline": true, // 是否使用inline排版
-  "labelPosition": 'right', // 标签对齐方式
-  "labelWidth": '90px', // 标签宽度
-  // "size": 'small', // 尺寸
-  "statusIcon": true, // 显示验证图标
+  // "inline": true, // 是否使用inline排版
+  // "labelPosition": 'right', // 标签对齐方式
+  // "labelWidth": '90px', // 标签宽度
+  // // "size": 'small', // 尺寸
+  // "statusIcon": true, // 显示验证图标
   "formItemList": [
     {
       "type": 'input', // 必要, String
       "subtype": 'text',
       "label": '文本', // 必要, String
-      "key": 'text1key', // 必要, String
-      // "disable": true, //禁用, Boolean
+      // "key": 'text1key', // 必要, String
+      "disable": true, //禁用, Boolean
       // "readonly": true, //只读, Boolean
       // "block": true, //独占一行, Boolean, 如果选项太长也会自动换行
       "value": '', // 默认值
@@ -44,40 +44,17 @@ export default {
         // https://github.com/yiminghe/async-validator
         { "required": true, "message": '不能为空', 'trigger': 'blur' },
         { "min": 1, "max": 8, "message": '长度在 1 到 8 个字符', 'trigger': 'blur' },
-        { "pattern": '^[\\w\\u4e00-\\u9fa5-_]+$', "message": '正则验证:^[\\w\\u4e00-\\u9fa5-_]+$', 'trigger': 'blur' },
-        { "sql": "SELECT {key} FROM balabala", "message": 'SQL验证(异步): 昵称被占用了...', 'trigger': 'blur' }
+        { "pattern": '^[\\w\\u4e00-\\u9fa5-_]+$', "message": '正则验证失败:^[\\w\\u4e00-\\u9fa5-_]+$', 'trigger': 'blur' },
+        { "sql": "SELECT {key} FROM balabala", "message": 'SQL验证失败', 'trigger': 'blur' }
       ],
     },
-    // {
-    //   "type": 'input',
-    //   "subtype": 'password',
-    //   "label": '密码',
-    //   "key": 'password1key',
-    //   "value": '',
-    //   "placeholder": '请输入密码',
-    //   "rules": [
-    //     { "required": true, "message": '不能为空', 'trigger': 'blur' },
-    //     { "min": 1, "max": 8, "message": '长度在 1 到 8 个字符', 'trigger': 'blur' },
-    //     { "pattern": '^[\\w\\u4e00-\\u9fa5-_]+$', "message": '正则验证:^[\\w\\u4e00-\\u9fa5-_]+$', 'trigger': 'blur' },
-    //   ],
-    // },
-    // {
-    //   "type": 'input',
-    //   "subtype": 'textarea',
-    //   "label": '文本域',
-    //   "key": 'textarea1key',
-    //   "value": '',
-    //   // "block": true,
-    //   "placeholder": '描述(可换行, 可不填)',
-    //   "autosize": true, // 自适应内容高度，只对 subtype="textarea" 有效, boolean / object
-    //   // "autosize": { "minRows": 2, "maxRows": 5 },
-    // },
-    // {
-    //   "type": 'switch',
-    //   "label": '开关',
+    {
+      "type": 'switch',
+      "label": '开关',
+      "appearance": "checkbox", // 外观, 'switch'开关(默认) / checkbox勾选
     //   "key": 'switch1',
-    //   "value": false
-    // },
+      "value": false
+    },
     // {
     //   "type": 'rate',
     //   "label": '评分',

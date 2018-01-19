@@ -50,9 +50,13 @@
 <script>
 import guid from '@/utils/guid'
 import EditorInput from './editors-item/input'
+import EditorSwitch from './editors-item/switch'
 
 export default {
-  components: { EditorInput },
+  components: {
+    EditorInput,
+    EditorSwitch,
+  },
   data() {
     return {
       activeName: 'items-list',
