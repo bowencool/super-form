@@ -31,7 +31,7 @@ export default {
       if (newV) {
         // 如果勾选了必填
         // 如果不存在这项规则, 就在头部添加
-        ruleIndex === -1 && this.itemRules.unshift({ required: true, message: '不能为空' })
+        ruleIndex === -1 && this.itemRules.unshift({ required: true, message: '不能为空', trigger: 'blur' })
       } else {
         //如果取消了勾选
         //如果已存在, 删除
@@ -43,7 +43,7 @@ export default {
       const ruleIndex = this.itemRules.findIndex(r => r.min !== undefined)
       if (enable) {
         // 勾选或者修改数值
-        const newRule = { min, max, message: `长度在${min}~${max}个字符` }
+        const newRule = { min, max, message: `长度在${min}~${max}个字符`, trigger: 'blur' }
 
         if (ruleIndex === -1) {
           // 勾选操作

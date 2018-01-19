@@ -27,24 +27,24 @@
 
     <el-radio-group v-else-if="item.type==='radio'" v-bind="$attrs" v-on="$listeners">
       <template v-if="item.button">
-        <el-radio-button v-for="(v,k) in item.options" :key='k' :label="k" >{{v}}</el-radio-button>
+        <el-radio-button v-for="(v,k) in item.options" :key='k' :label="k">{{v}}</el-radio-button>
       </template>
       <template v-else>
-        <el-radio v-for="(v,k) in item.options" :key='k' :label="k"  :border="item.border">{{v}}</el-radio>
+        <el-radio v-for="(v,k) in item.options" :key='k' :label="k" :border="item.border">{{v}}</el-radio>
       </template>
     </el-radio-group>
 
     <el-checkbox-group v-else-if="item.type==='checkbox'" :min="item.min" :max="item.max" v-bind="$attrs" v-on="$listeners">
       <template v-if="item.button">
-        <el-checkbox-button v-for="(v,k) in item.options" :key="k" :label="k" >{{v}}</el-checkbox-button>
+        <el-checkbox-button v-for="(v,k) in item.options" :key="k" :label="k">{{v}}</el-checkbox-button>
       </template>
       <template v-else>
-        <el-checkbox v-for="(v,k) in item.options" :key="k" :label="k"  :border="item.border">{{v}}</el-checkbox>
+        <el-checkbox v-for="(v,k) in item.options" :key="k" :label="k" :border="item.border">{{v}}</el-checkbox>
       </template>
     </el-checkbox-group>
 
     <el-select v-else-if="item.type==='select'" v-bind="$attrs" v-on="$listeners" :multiple="item.multiple" :multiple-limit="item.multipleLimit">
-      <el-option v-for="(v,k) in item.options" :key="k" :label="v" :value="k" >
+      <el-option v-for="(v,k) in item.options" :key="k" :label="v" :value="k">
       </el-option>
     </el-select>
 
@@ -83,10 +83,12 @@ export default {
       rules.forEach(rule => {
         if (rule.sql) {
           const validator = (rule2, value, callback) => {
-            this.$post('/validate', { key: rule2.field, value, sql: rule.sql.replace(/{key}/ig, rule2.field) })
-              .then(res => {
-                callback(!res || undefined)
-              })
+            /* eslint-disable */
+            setTimeout(callback, 1000)
+            // this.$post('/validate', { key: rule2.field, value, sql: rule.sql.replace(/{key}/ig, rule2.field) })
+            //   .then(res => {
+            //     callback(!res || undefined)
+            //   })
           }
 
           R.push({ validator, message: rule.message, trigger: 'blur' })
