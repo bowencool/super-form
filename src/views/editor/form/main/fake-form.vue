@@ -3,15 +3,15 @@
 
     <draggable v-model="dynamicForm.formItemList">
 
-      <!-- <transition-group name="el-fade-in"> -->
+      <transition-group name="list-complete">
 
-        <div v-for="(item,i) in dynamicForm.formItemList" :key="item.key" class="draggable" :class="{'selected': $store.state.itemKey===item.key}" @click="select(item.key)">
+        <div v-for="(item,i) in dynamicForm.formItemList" :key="item.key" class="draggable list-complete-item" :class="{'selected': $store.state.itemKey===item.key}" @click="select(item.key)">
 
           <fake-form-item :item="item"></fake-form-item>
           <i class="el-icon-delete" @click.stop="deleteItem(i)"></i>
 
         </div>
-      <!-- </transition-group> -->
+      </transition-group>
 
     </draggable>
 
@@ -81,5 +81,13 @@ export default {
       display: inline-block;
     }
   }
+}
+
+.list-complete-item {
+  transition: all 1s;
+}
+
+.list-complete-enter, .list-complete-leave-active {
+  opacity: 0;
 }
 </style>
