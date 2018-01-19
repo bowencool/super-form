@@ -51,9 +51,9 @@ export default {
     {
       "type": 'switch',
       "label": '开关',
-      "appearance": "checkbox", // 外观, 'switch'开关(默认) / checkbox勾选
+      "appearance": "switch", // 外观, 'switch'开关(默认) / checkbox勾选
     //   "key": 'switch1',
-      "value": false
+      "value": true
     },
     // {
     //   "type": 'rate',
