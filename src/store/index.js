@@ -14,6 +14,7 @@ const store = new Vuex.Store({
     }
   },
   modules: {
+    //todo 表格table 图表Chart
     forms,
   },
 })

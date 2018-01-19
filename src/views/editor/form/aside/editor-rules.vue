@@ -4,9 +4,7 @@
 
     el-checkbox(:value="valid1" @input="handleValid1") 必填
 
-    div
-      el-checkbox(:value="valid2.enable" @input="handleValid2({enable:$event})") 验证长度
-      p {{valid2}}
+    el-checkbox(:value="valid2.enable" @input="handleValid2({enable:$event})") 验证长度
     div(v-show="valid2.enable")
       el-input-number(controls-position="right" size="mini"
         :value="valid2.min"
@@ -20,7 +18,7 @@
         :min="valid2.min"
         :max="9999")
 
-    pre {{itemRules}}
+    //- pre {{itemRules}}
 </template>
 
 <script>
@@ -51,6 +49,7 @@ export default {
         } else {
           // 修改操作
           this.itemRules[ruleIndex] = newRule
+          this.$emit('update:item-rules', [...this.itemRules])
         }
       } else {
         // 只能是取消勾选
@@ -73,11 +72,21 @@ export default {
       max: this.itemRules[v2idx].max
     } : { enable: false, min: 1, max: 5 }
 
+    // 正则
+    const v3idx = this.itemRules.findIndex(r => r.pattern !== undefined)
+    const v3 = v3idx > -1 ? {
+      enable: true,
+      min: this.itemRules[v3idx].min,
+      max: this.itemRules[v3idx].max
+    } : { enable: false, min: 1, max: 5 }
+
     return {
       // 是否必填
       valid1: v1idx > -1,
       // 验证长度
       valid2: v2,
+      // 正则
+      valid3: v3,
     }
   },
   props: {

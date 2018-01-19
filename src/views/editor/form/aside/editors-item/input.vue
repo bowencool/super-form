@@ -6,7 +6,7 @@
           el-radio-button(label="text") 文本
           el-radio-button(label="password") 密码
           el-radio-button(label="textarea") 多行文本
-      el-form-item(label="标签")
+      el-form-item(label="标签名")
         el-input(v-model="formItem.label")
       el-form-item(label="占位文本")
         el-input(v-model="formItem.placeholder")
@@ -15,9 +15,11 @@
       el-form-item(label="默认值")
         el-input(v-model="formItem.value" :type="formItem.subtype")
 
-    editor-rules(:item-rules.sync="formItem.rules" :item-type="formItem.type")
+    //- wtf?
+    //- editor-rules(:item-rules.sync="formItem.rules" :item-type="formItem.type")
+    editor-rules(:item-rules="formItem.rules" @update:item-rules="n => formItem.rules = n" :item-type="formItem.type")
 
-    //- pre {{formItem}}
+    pre {{formItem}}
 </template>
 
 <script>
@@ -29,6 +31,6 @@ export default {
       type: Object,
       required: true,
     }
-  }
+  },
 }
 </script>

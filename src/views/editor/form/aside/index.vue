@@ -1,26 +1,47 @@
+<style lang="less">
+.bowen-aside {
+  background-color: rgb(238, 241, 246);
+  .el-card {
+    background-color: inherit;
+    .el-card__body {
+      padding: 0 5px;
+    }
+  }
+  .el-tag {
+    cursor: pointer;
+  }
+  .el-input-number--mini {
+    width: 100px;
+  }
+}
+</style>
+
+
 <template lang="pug">
-  el-aside(style="background-color: rgb(238, 241, 246)")
+  el-aside.bowen-aside
     el-tabs(v-model="activeName")
 
-      el-tab-pane(label="所有组件" name="items-list")
-        el-tag(v-for="(item,i) in require('@/utils/constant').DYNAMIC_FORM.formItemList" :key="i" @click.native="addItem(item)")
-          icon-svg(:icon="item.type")
-          span {{item.label}}
+      el-tab-pane(label="添加组件" name="items-list")
+        el-card
+          el-tag(v-for="(item,i) in require('@/utils/constant').DYNAMIC_FORM.formItemList" :key="i" @click.native="addItem(item)")
+            icon-svg(:icon="item.type")
+            span {{item.label}}
+
+      el-tab-pane(label="组件配置" name="item-config")
+        el-card
+          component(
+            v-if="selectedItem"
+            :is="`editor-${selectedItem.type}`"
+            :form-item="selectedItem"
+            size="mini"
+            label-position="right"
+            label-width="70px"
+          )
+          p(v-else) 先选择一个组件
 
       el-tab-pane(label="全局配置" name="global-config")
         dynamic-form(:dynamicForm="require('./editor-global.json')" v-model="currentForm")
         //- todo 配置按钮
-
-      el-tab-pane(label="组件配置" name="item-config")
-        component(
-          v-if="selectedItem"
-          :is="`editor-${selectedItem.type}`"
-          :form-item="selectedItem"
-          size="mini"
-          label-position="right"
-          label-width="75px"
-          inline
-        )
 
       el-tab-pane(label="查看JSON" name="source")
         pre {{currentForm}}
