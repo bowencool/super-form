@@ -9,13 +9,24 @@
   }
   .el-tag {
     cursor: pointer;
+    font-size: 14px;
+    height: 60px;
+    line-height: 1.2;
+    padding: 10px;
+    text-align: center;
+    .svg-icon {
+      width: 1.3em;
+      height: 1.3em;
+    }
+    span {
+      display: block;
+    }
   }
   .el-input-number--mini {
     width: 100px;
   }
 }
 </style>
-
 
 <template lang="pug">
   el-aside.bowen-aside
