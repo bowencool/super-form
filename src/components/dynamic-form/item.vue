@@ -11,7 +11,7 @@
 // 富文本支持
 
 <template>
-  <el-form-item :rules="Rules" :label="item.label" :prop="item.key" v-bind="$attrs" v-on="$listeners" :class="{'block':item.block}">
+  <el-form-item :rules="Rules" :label="item.label" :prop="item.key" :class="{'block':item.block}">
 
     <el-input v-if="item.type==='input'" v-bind="$attrs" v-on="$listeners" :type="item.subtype" :placeholder="item.placeholder" :disabled="item.disable" :readonly="item.readonly" :autosize="item.autosize"></el-input>
 

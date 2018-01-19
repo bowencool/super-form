@@ -1,11 +1,14 @@
 <template lang="pug">
   div
     p.c666.text-center 验证规则[type={{itemType}}]
+    //- pre {{itemRules}}
+    div
+      el-checkbox(:value="valid1" @input="handleValid1") 必填
 
-    el-checkbox(:value="valid1" @input="handleValid1") 必填
-
-    el-checkbox(:value="valid2.enable" @input="handleValid2({enable:$event})") 验证长度
+    div
+      el-checkbox(:value="valid2.enable" @input="handleValid2({enable:$event})") 验证长度
     div(v-show="valid2.enable")
+      //- label.c666 长度
       el-input-number(controls-position="right" size="mini"
         :value="valid2.min"
         @input="handleValid2({min:$event})"
@@ -18,7 +21,10 @@
         :min="valid2.min"
         :max="9999")
 
-    //- pre {{itemRules}}
+    div
+      el-checkbox(:value="valid3.enable" @input="handleValid3({enable:$event})") 正则验证(暂不支持flag)
+    div(v-show="valid3.enable")
+      el-input(size="mini" :value="valid3.pattern" @input="handleValid3({pattern:$event})")
 </template>
 
 <script>
@@ -37,6 +43,7 @@ export default {
       }
       this.valid1 = newV
     },
+    // todo 大量重复
     handleValid2({ enable = this.valid2.enable, min = this.valid2.min, max = this.valid2.max }) {
       const ruleIndex = this.itemRules.findIndex(r => r.min !== undefined)
       if (enable) {
@@ -57,6 +64,26 @@ export default {
       }
       this.valid2 = { enable, min, max }
     },
+    handleValid3({ enable = this.valid3.enable, pattern = this.valid3.pattern }) {
+      const ruleIndex = this.itemRules.findIndex(r => r.pattern !== undefined)
+      if (enable) {
+        // 勾选或者修改数值
+        const newRule = { pattern, message: `输入不合法: ${pattern}`, trigger: 'blur' }
+
+        if (ruleIndex === -1) {
+          // 勾选操作
+          this.itemRules.push(newRule)
+        } else {
+          // 修改操作
+          this.itemRules[ruleIndex] = newRule
+          this.$emit('update:item-rules', [...this.itemRules])
+        }
+      } else {
+        // 只能是取消勾选
+        ruleIndex > -1 && this.itemRules.splice(ruleIndex, 1)
+      }
+      this.valid3 = { enable, pattern }
+    },
   },
   data() {
     // 从已有数据中读取初始值
@@ -76,9 +103,8 @@ export default {
     const v3idx = this.itemRules.findIndex(r => r.pattern !== undefined)
     const v3 = v3idx > -1 ? {
       enable: true,
-      min: this.itemRules[v3idx].min,
-      max: this.itemRules[v3idx].max
-    } : { enable: false, min: 1, max: 5 }
+      pattern: this.itemRules[v3idx].pattern,
+    } : { enable: false, pattern: '' }
 
     return {
       // 是否必填
