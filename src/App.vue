@@ -32,9 +32,15 @@ body,
 .el-header {
   padding: 0;
 }
-.clear-fix:after {
-  display: table;
-  clear: both;
-  content: ' ';
+// .clear-fix:after {
+//   display: table;
+//   clear: both;
+//   content: ' ';
+// }
+.text-center {
+  text-align: center;
+}
+.c666 {
+  color: #666;
 }
 </style>

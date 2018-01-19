@@ -13,6 +13,7 @@
 
       el-tab-pane(label="组件配置" name="item-config")
         component(
+          v-if="selectedItem"
           :is="`editor-${selectedItem.type}`"
           :form-item="selectedItem"
           size="mini"
@@ -46,12 +47,14 @@ export default {
       }
     },
     selectedItem() {
-      return this.currentForm.formItemList.find(item => item.key === this.$store.state.itemKey) || {}
+      return this.currentForm.formItemList.find(item => item.key === this.$store.state.itemKey)
     }
   },
   methods: {
     addItem(item) {
-      this.currentForm.formItemList.push({ ...item, key: guid() })
+      const key = guid()
+      this.currentForm.formItemList.push({ ...item, key })
+      this.$store.commit('SELECT_ITEM', key)
     }
   }
 }

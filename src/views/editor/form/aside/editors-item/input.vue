@@ -17,7 +17,7 @@
 
     editor-rules(:item-rules.sync="formItem.rules" :item-type="formItem.type")
 
-    pre {{formItem}}
+    //- pre {{formItem}}
 </template>
 
 <script>
