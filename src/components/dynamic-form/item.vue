@@ -5,6 +5,11 @@
 }
 </style>
 
+// todo
+// 每行排两个&独占一行是否有必要
+// 长得像checkbox的开关
+// 富文本支持
+
 <template>
   <el-form-item :rules="Rules" :label="item.label" :prop="item.key" v-bind="$attrs" v-on="$listeners" :class="{'block':item.block}">
 

@@ -2,7 +2,7 @@
   <!-- todo functional -->
   <el-form-item :label="item.label">
 
-    <el-input v-if="item.type==='input'" readonly :placeholder="item.placeholder" :autosize="item.autosize"></el-input>
+    <el-input v-if="item.type==='input'" readonly :type="item.subtype" :placeholder="item.placeholder" :autosize="item.autosize" :value="item.value"></el-input>
 
     <span v-else>未知控件类型</span>
 
