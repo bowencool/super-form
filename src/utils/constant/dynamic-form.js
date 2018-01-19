@@ -35,7 +35,7 @@ export default {
       "label": '文本', // 必要, String
       // "key": 'text1key', // 必要, String
       "disable": true, //禁用, Boolean
-      // "readonly": true, //只读, Boolean
+      "readonly": true, //只读, Boolean
       // "block": true, //独占一行, Boolean, 如果选项太长也会自动换行
       "value": '', // 默认值
       "placeholder": '请输入一些文本',
