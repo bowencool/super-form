@@ -14,6 +14,7 @@
     line-height: 1.2;
     padding: 10px;
     text-align: center;
+    margin: 5px;
     .svg-icon {
       width: 1.3em;
       height: 1.3em;
@@ -62,11 +63,13 @@
 import guid from '@/utils/guid'
 import EditorInput from './editors-item/input'
 import EditorSwitch from './editors-item/switch'
+import EditorRadio from './editors-item/radio'
 
 export default {
   components: {
     EditorInput,
     EditorSwitch,
+    EditorRadio,
   },
   computed: {
     activeName: {

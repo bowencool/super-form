@@ -18,6 +18,22 @@
       v-else-if="item.type==='switch'"
       :value="item.value"
       :disabled="true")
+    //- 单选
+    el-radio-group(
+      v-else-if="item.type==='radio'"
+      :value="item.value")
+      template(v-if="item.button")
+        el-radio-button(
+          v-for="(v,k) in item.options"
+          :key='k'
+          :label="k"
+          :border="item.border") {{v}}
+      template(v-else)
+        el-radio(
+          v-for="(v,k) in item.options"
+          :key='k'
+          :label="k"
+          :border="item.border") {{v}}
 
     span(v-else) 未知控件类型
 

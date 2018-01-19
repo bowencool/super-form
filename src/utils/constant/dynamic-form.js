@@ -120,18 +120,18 @@ export default {
     //   "max": 99999,
     //   "append": '个',
     // },
-    // {
-    //   "type": 'radio',
-    //   "label": '单选',
-    //   "key": 'select1',
-    //   "value": '',
-    //   options,
-    //   // "button": true, // 按钮形状, inline模式下推荐开启, 多选框checkbox同样有效
-    //   // "border": true, // (非按钮形式)显示边框, inline模式下推荐开启, 多选框checkbox同样有效
-    //   "rules": [{
-    //     required: true, message: '请选择一项'
-    //   }]
-    // },
+    {
+      "type": 'radio',
+      "label": '单选',
+      // "key": 'select1',
+      "value": '',
+      options,
+      "button": true, // 按钮形状, inline模式下推荐开启, 多选框checkbox同样有效
+      "border": true, // (非按钮形式)显示边框, inline模式下推荐开启, 多选框checkbox同样有效
+      "rules": [{
+        required: true, message: '请选择一项'
+      }]
+    },
     // {
     //   "type": 'radio',
     //   "label": '按钮形状',
