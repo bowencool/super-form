@@ -6,11 +6,17 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    itemKey: '',
+    itemKey: '', // 当前选中的item
+    asideActiveName: 'items-list', // 侧边栏标签当前活动位置
   },
   mutations: {
     SELECT_ITEM(state, newKey) {
       state.itemKey = newKey
+      // 只要itemKey变化, 就切换至'组件配置'页
+      state.asideActiveName = 'item-config'
+    },
+    TOGGLE_ASIDE_ACTIVE(state, newName) {
+      state.asideActiveName = newName
     }
   },
   modules: {

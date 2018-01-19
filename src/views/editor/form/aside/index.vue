@@ -57,12 +57,15 @@ export default {
     EditorInput,
     EditorSwitch,
   },
-  data() {
-    return {
-      activeName: 'items-list',
-    }
-  },
   computed: {
+    activeName: {
+      get() {
+        return this.$store.state.asideActiveName
+      },
+      set(newV) {
+        this.$store.commit('TOGGLE_ASIDE_ACTIVE', newV)
+      }
+    },
     currentForm: {
       get() {
         return this.$store.state.forms[this.$route.params.fid]
@@ -73,7 +76,7 @@ export default {
     },
     selectedItem() {
       return this.currentForm.formItemList.find(item => item.key === this.$store.state.itemKey)
-    }
+    },
   },
   methods: {
     addItem(item) {
