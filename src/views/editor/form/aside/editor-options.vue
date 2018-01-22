@@ -15,31 +15,71 @@
     div.c666(v-for="(opt,i) in itemOptions" :key="i")
 
       template(v-if="editingIdx===i")
-        el-input(size="mini" v-model="editingOpt.value" placeholder="值")
-        el-input(size="mini" v-model="editingOpt.label" placeholder="标签")
+        el-input(
+          size="mini"
+          v-model="editingOpt.value"
+          placeholder="值")
+        el-input(
+          size="mini"
+          v-model="editingOpt.label"
+          placeholder="标签")
         el-button-group
-          el-button(size="mini" icon="el-icon-success" @click="handleSave(i)")
-          el-button(size="mini" icon="el-icon-error" @click="editingIdx=-1")
-      div(v-else) {{opt.value}}----&gt;{{opt.label}}
+          el-button(
+            size="mini"
+            icon="el-icon-success"
+            @click="handleSave(i)")
+          el-button(
+            size="mini"
+            icon="el-icon-error"
+            @click="editingIdx=-1")
 
-      el-button-group()
+      div(v-else)
+        //- icon-svg(:icon="'checkbox'")
+        //- span {{defaultValue}}
+        span {{opt.value}} --- {{opt.label}}
+
+      el-button-group
         el-button(
-          size="mini" round
+          size="mini"
+          round
           @click="opt.disabled = !opt.disabled"
-          :title="opt.disabled?'已禁用':'已开启'"
+          :title="opt.disabled?'不可选':'可选'"
           :type="opt.disabled?'info':''")
           icon-svg(icon="disabled")
-        el-button(size="mini" @click="handlePreEdit(i, opt)" icon="el-icon-edit" round)
-        el-button(size="mini" @click="itemOptions.splice(i,1)" icon="el-icon-delete" round)
+        el-button(
+          size="mini"
+          @click="handlePreEdit(i, opt)"
+          icon="el-icon-edit"
+          round)
+        el-button(
+          size="mini"
+          @click="itemOptions.splice(i,1)"
+          icon="el-icon-delete"
+          round)
 
     template(v-if="editingIdx===-2")
-      el-input(size="mini" v-model="editingOpt.value" placeholder="值")
-      el-input(size="mini" v-model="editingOpt.label" placeholder="标签")
+      el-input(
+        size="mini"
+        v-model="editingOpt.value"
+        placeholder="值")
+      el-input(
+        size="mini"
+        v-model="editingOpt.label"
+        placeholder="标签")
       el-button-group
-        el-button(size="mini" @click="handleSave(itemOptions.length)" icon="el-icon-success")
-        el-button(size="mini" @click="editingIdx=-1" icon="el-icon-error")
+        el-button(
+          size="mini"
+          @click="handleSave(itemOptions.length)"
+          icon="el-icon-success")
+        el-button(
+          size="mini"
+          @click="editingIdx=-1"
+          icon="el-icon-error")
 
-    el-button(@click="handlePreAdd" size="mini" type="primary") 新增
+    el-button(
+      @click="handlePreAdd"
+      size="mini"
+      type="primary") 新增
 </template>
 
 <script>
@@ -65,6 +105,17 @@ export default {
         'value': '',
         'label': '',
         'disabled': false,
+      }
+    }
+  },
+  computed: {
+    defaultValue: {
+      get() {
+        console.log(this.value)
+        return this.value
+      },
+      set(newV) {
+        this.$emit('input', newV)
       }
     }
   },

@@ -28,10 +28,10 @@
 
     <el-radio-group v-else-if="item.type==='radio'" v-bind="$attrs" v-on="$listeners">
       <template v-if="item.button">
-        <el-radio-button v-for="o in item.options" :key='o.value' :label="o.value">{{o.label}}</el-radio-button>
+        <el-radio-button v-for="o in item.options" :key='o.value' :label="o.value" :disabled="o.disabled">{{o.label}}</el-radio-button>
       </template>
       <template v-else>
-        <el-radio v-for="o in item.options" :key='o.value' :label="o.value" :border="item.border">{{o.label}}</el-radio>
+        <el-radio v-for="o in item.options" :key='o.value' :label="o.value" :disabled="o.disabled" :border="item.border">{{o.label}}</el-radio>
       </template>
     </el-radio-group>
 
@@ -40,18 +40,20 @@
         <el-checkbox-button
           v-for="o in item.options"
           :key='o.value'
+          :disabled="o.disabled"
           :label="o.value">{{o.label}}</el-checkbox-button>
       </template>
       <template v-else>
         <el-checkbox
           v-for="o in item.options"
           :key='o.value'
+          :disabled="o.disabled"
           :label="o.value" :border="item.border">{{o.label}}</el-checkbox>
       </template>
     </el-checkbox-group>
 
     <el-select v-else-if="item.type==='select'" v-bind="$attrs" v-on="$listeners" :multiple="item.multiple" :multiple-limit="item.multipleLimit">
-      <el-option v-for="o in item.options" :key="o.value" :label="o.label" :value="o.value">
+      <el-option v-for="o in item.options" :key="o.value" :label="o.label" :value="o.value" :disabled="o.disabled">
       </el-option>
     </el-select>
 

@@ -1,10 +1,10 @@
 <template lang="pug" functional>
-  svg.svg-icon(aria-hidden="true")
+  svg.icon-svg(aria-hidden="true" :class="[props.icon]")
     use(:xlink:href="`#icon-${props.icon}`")
 </template>
 
 <style lang="less">
-.svg-icon {
+.icon-svg {
   width: 1em;
   height: 1em;
   vertical-align: -0.05em;

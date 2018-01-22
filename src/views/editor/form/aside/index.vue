@@ -7,7 +7,7 @@
       padding: 0 5px;
     }
   }
-  .el-tag {
+  .el-tag.item {
     cursor: pointer;
     font-size: 14px;
     height: 60px;
@@ -15,7 +15,7 @@
     padding: 10px;
     text-align: center;
     margin: 5px;
-    .svg-icon {
+    .icon-svg {
       width: 1.3em;
       height: 1.3em;
     }
@@ -35,11 +35,9 @@
 
       el-tab-pane(label="添加组件" name="items-list")
         el-card
-          el-tag(v-for="(item,i) in require('@/utils/constant').DYNAMIC_FORM.formItemList" :key="i" @click.native="addItem(item)")
+          el-tag.item(v-for="(item,i) in require('@/utils/constant').DYNAMIC_FORM.formItemList" :key="i" @click.native="addItem(item)")
             icon-svg(:icon="item.type")
             span {{item.label}}
-
-
 
       el-tab-pane(label="组件配置" name="item-config")
         el-card
@@ -66,11 +64,13 @@ import guid from '@/utils/guid'
 import EditorInput from './editors-item/input'
 import EditorSwitch from './editors-item/switch'
 import EditorRadio from './editors-item/radio'
+import EditorCheckbox from './editors-item/checkbox'
 
 export default {
   components: {
     EditorInput,
     EditorSwitch,
+    EditorCheckbox,
     EditorRadio,
   },
   computed: {

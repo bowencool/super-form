@@ -38,6 +38,41 @@ export default {
       "appearance": "switch", // 外观, 'switch'开关(默认) / checkbox勾选
       "value": true
     },
+    {
+      "type": 'radio',
+      "label": '单选',
+      "value": '',
+      "options": [
+        {
+          "value": 'opt1',
+          "label": '蒸羊羔',
+          "disabled": false
+        }
+      ],
+      "button": true, // 按钮形状, inline模式下推荐开启, 多选框checkbox同样有效
+      "border": true, // (非按钮形式)显示边框, inline模式下推荐开启, 多选框checkbox同样有效
+      "rules": [{
+        "required": true, "message": '请选择一项', "trigger": 'blur'
+      }]
+    },
+    {
+      "type": 'checkbox',
+      "label": '多选s',
+      "value": [],
+      // "border": true,
+      // "max": 2, // 限制输入
+      // "min": 1,
+      "options": [
+        {
+          "value": 'opt1',
+          "label": '蒸羊羔',
+          "disabled": false
+        }
+      ],
+      "rules": [
+        { "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' }
+      ]
+    },
     // {
     //   "type": 'rate',
     //   "label": '评分',
@@ -103,24 +138,6 @@ export default {
     //   "max": 99999,
     //   "append": '个',
     // },
-    {
-      "type": 'radio',
-      "label": '单选',
-      // "key": 'select1',
-      "value": '',
-      "options": [
-        {
-          "value": 'opt1',
-          "label": '蒸羊羔',
-          "disabled": false
-        }
-      ],
-      "button": true, // 按钮形状, inline模式下推荐开启, 多选框checkbox同样有效
-      "border": true, // (非按钮形式)显示边框, inline模式下推荐开启, 多选框checkbox同样有效
-      "rules": [{
-        "required": true, "message": '请选择一项', "trigger": 'blur'
-      }]
-    },
     // {
     //   "type": 'select',
     //   "label": '下拉单选',
@@ -137,24 +154,6 @@ export default {
     //   "rules": [{
     //     required: true, message: '请选择一项'
     //   }]
-    // },
-    // {
-    //   "type": 'checkbox',
-    //   "label": '多选',
-    //   "key": 'multiSelect1',
-    //   "value": [],
-    //   // "button": true,
-    //   // "border": true,
-    //   // "max": 2, // 限制输入
-    //   // "min": 1,
-    //   options: [
-    //     {
-    //       "value": 'opt1',
-    //       "label": '蒸羊羔',
-    //       "disabled": false
-    //     }
-    //   ],
-    //   "rules": [{ "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' }] // 输入后验证
     // },
     // {
     //   "type": 'checkbox',
