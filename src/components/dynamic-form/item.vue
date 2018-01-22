@@ -7,8 +7,8 @@
 
 // todo
 // 每行排两个&独占一行是否有必要
-// 长得像checkbox的开关
 // 富文本支持
+// 文件上传
 
 <template>
   <el-form-item :rules="Rules" :label="item.label" :prop="item.key" :class="{'block':item.block}">

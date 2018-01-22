@@ -34,6 +34,15 @@
 </template>
 
 <script>
+// const RULE_TYPE_MAP = {
+//   input: ['length', 'regexp', 'sql'],
+//   radio: [],
+//   checkbox: ['length'],
+//   select: [], // todo 下拉翻页?搜索?多选怎么处理?
+//   cascader: [], // todo 支持级别
+//   date: [], // todo 子类型会变
+//   time: [],
+// }
 export default {
   methods: {
     handleValid1(newV) {

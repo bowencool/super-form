@@ -70,8 +70,7 @@ export default {
   }
 
   .el-form-item {
-    label,
-    input {
+    label {
       cursor: move;
     }
   }

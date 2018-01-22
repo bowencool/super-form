@@ -4,7 +4,7 @@
     //- 文本
     el-input(
       v-if="item.type==='input'"
-      :readonly="true"
+      :disabled="true"
       :type="item.subtype"
       :placeholder="item.placeholder"
       :autosize="item.autosize"
@@ -27,13 +27,15 @@
           v-for="(v,k) in item.options"
           :key='k'
           :label="k"
-          :border="item.border") {{v}}
+          :border="item.border"
+          disabled) {{v}}
       template(v-else)
         el-radio(
           v-for="(v,k) in item.options"
           :key='k'
           :label="k"
-          :border="item.border") {{v}}
+          :border="item.border"
+          disabled) {{v}}
 
     span(v-else) 未知控件类型
 
