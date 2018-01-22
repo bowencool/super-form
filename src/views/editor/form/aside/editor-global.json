@@ -25,23 +25,44 @@
       "key": "labelPosition",
       "value": "right",
       "button": true,
-      "options": {
-        "left": "左对齐",
-        "top": "顶部对齐",
-        "right": "右对齐"
-      }
+      "options": [
+        {
+          "value": "left",
+          "label": "左对齐"
+        },
+        {
+          "value": "top",
+          "label": "顶部对齐"
+        },
+        {
+          "value": "right",
+          "label": "右对齐"
+        }
+      ]
     },
     {
       "type": "select",
       "label": "尺寸",
       "key": "size",
       "value": "small",
-      "options": {
-        "": "大",
-        "medium": "中等",
-        "small": "小",
-        "mini": "迷你"
-      }
+      "options": [
+        {
+          "value": "",
+          "label": "(默认)"
+        },
+        {
+          "value": "medium",
+          "label": "中"
+        },
+        {
+          "value": "small",
+          "label": "小"
+        },
+        {
+          "value": "mini",
+          "label": "迷你"
+        }
+      ]
     },
     {
       "type": "switch",

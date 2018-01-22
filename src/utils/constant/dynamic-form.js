@@ -1,26 +1,11 @@
 /* eslint-disable */
-// todo
 // const options = [
 //   {
-//     "value": 1,
-//     "label": '蒸羊羔'
-//   }, {
-//     "value": 2,
-//     "label": '蒸熊掌'
-//   }, {
-//     "value": 3,
-//     "label": '蒸鹿尾儿'
-//   }, {
-//     "value": 4,
-//     "label": '烧花鸭',
-//     "disabled": true
+//     "value": 'opt1',
+//     "label": '蒸羊羔',
+//     "disabled": false
 //   }
 // ]
-const options = {
-  aaa: '蒸羊羔',
-  bbb: '蒸熊掌',
-  ccc: '蒸鹿尾儿',
-}
 export default {
   // "title": '', // 暂时没用到
   // "inline": true, // 是否使用inline排版
@@ -33,7 +18,6 @@ export default {
       "type": 'input', // 必要, String
       "subtype": 'text',
       "label": '文本', // 必要, String
-      // "key": 'text1key', // 必要, String
       "disable": true, //禁用, Boolean
       "readonly": true, //只读, Boolean
       // "block": true, //独占一行, Boolean, 如果选项太长也会自动换行
@@ -52,7 +36,6 @@ export default {
       "type": 'switch',
       "label": '开关',
       "appearance": "switch", // 外观, 'switch'开关(默认) / checkbox勾选
-    //   "key": 'switch1',
       "value": true
     },
     // {
@@ -125,31 +108,31 @@ export default {
       "label": '单选',
       // "key": 'select1',
       "value": '',
-      options,
+      "options": [
+        {
+          "value": 'opt1',
+          "label": '蒸羊羔',
+          "disabled": false
+        }
+      ],
       "button": true, // 按钮形状, inline模式下推荐开启, 多选框checkbox同样有效
       "border": true, // (非按钮形式)显示边框, inline模式下推荐开启, 多选框checkbox同样有效
       "rules": [{
-        required: true, message: '请选择一项'
+        "required": true, "message": '请选择一项', "trigger": 'blur'
       }]
     },
-    // {
-    //   "type": 'radio',
-    //   "label": '按钮形状',
-    //   "key": 'select1',
-    //   "value": '',
-    //   options,
-    //   "button": true,
-    //   // "border": true,
-    //   "rules": [{
-    //     required: true, message: '请选择一项'
-    //   }]
-    // },
     // {
     //   "type": 'select',
     //   "label": '下拉单选',
     //   "key": 'select1',
     //   "value": '',
-    //   options,
+    //   options: [
+    //     {
+    //       "value": 'opt1',
+    //       "label": '蒸羊羔',
+    //       "disabled": false
+    //     }
+    //   ],
     //   "placeholder": '请选择',
     //   "rules": [{
     //     required: true, message: '请选择一项'
@@ -164,7 +147,13 @@ export default {
     //   // "border": true,
     //   // "max": 2, // 限制输入
     //   // "min": 1,
-    //   options,
+    //   options: [
+    //     {
+    //       "value": 'opt1',
+    //       "label": '蒸羊羔',
+    //       "disabled": false
+    //     }
+    //   ],
     //   "rules": [{ "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' }] // 输入后验证
     // },
     // {
@@ -173,7 +162,13 @@ export default {
     //   "key": 'multiSelect1',
     //   "value": [],
     //   "border": true,
-    //   options,
+    //   options: [
+    //     {
+    //       "value": 'opt1',
+    //       "label": '蒸羊羔',
+    //       "disabled": false
+    //     }
+    //   ],
     //   "rules": [{ "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' }]
     // },
     // {
@@ -183,7 +178,13 @@ export default {
     //   "multiple": true,
     //   // "multipleLimit": 2, // 多选时用户最多可以选择的项目数，为 0 则不限制
     //   "value": [],
-    //   options,
+    //   options: [
+    //     {
+    //       "value": 'opt1',
+    //       "label": '蒸羊羔',
+    //       "disabled": false
+    //     }
+    //   ],
     //   "placeholder": '请选择',
     //   "rules": [{ "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' }]
     // },

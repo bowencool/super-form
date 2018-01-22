@@ -27,6 +27,7 @@ html,
 body,
 #app {
   margin: 0;
+  font-size: 14px;
   height: 100%;
 }
 .el-header {
@@ -41,6 +42,6 @@ body,
   text-align: center;
 }
 .c666 {
-  color: #666;
+  color: #606266;
 }
 </style>

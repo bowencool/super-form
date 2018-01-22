@@ -39,6 +39,8 @@
             icon-svg(:icon="item.type")
             span {{item.label}}
 
+
+
       el-tab-pane(label="组件配置" name="item-config")
         el-card
           component(

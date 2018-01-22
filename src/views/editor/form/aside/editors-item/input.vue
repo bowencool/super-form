@@ -27,6 +27,7 @@
 </template>
 
 <script>
+// todo maxlength?
 import EditorRules from '../editor-rules'
 export default {
   components: { EditorRules },
