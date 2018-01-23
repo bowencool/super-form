@@ -60,7 +60,7 @@
           :label="o.value"
           :border="item.border"
           disabled) {{o.label}}
-    // 下拉
+    //- 下拉
     el-select(
       v-else-if="item.type==='select'"
       :value="item.value"
