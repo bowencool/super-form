@@ -57,9 +57,10 @@ export default {
     },
     {
       "type": 'checkbox',
-      "label": '多选s',
+      "label": '多选',
       "value": [],
-      // "border": true,
+      "border": true,
+      "button": false,
       // "max": 2, // 限制输入
       // "min": 1,
       "options": [

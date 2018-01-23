@@ -13,7 +13,7 @@
       el-form-item(label="按钮形状")
         el-switch(v-model="formItem.button")
 
-    editor-options(:itemOptions="formItem.options" select-type="single" v-model="formItem.value")
+    editor-options(:itemOptions="formItem.options" select-type="multiple" v-model="formItem.value")
 
     //- wtf?
     //- editor-rules(:item-rules.sync="formItem.rules" :item-type="formItem.type")

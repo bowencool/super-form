@@ -35,6 +35,23 @@
           :label="o.value"
           :border="item.border"
           disabled) {{o.label}}
+    //- 多选
+    el-checkbox-group(
+      v-else-if="item.type==='checkbox'"
+      :value="item.value")
+      template(v-if="item.button")
+        el-checkbox-button(
+          v-for="o in item.options"
+          :key='o.value'
+          :label="o.value"
+          disabled) {{o.label}}
+      template(v-else)
+        el-checkbox(
+          v-for="o in item.options"
+          :key='o.value'
+          :label="o.value"
+          :border="item.border"
+          disabled) {{o.label}}
 
     span(v-else) 未知控件类型
 

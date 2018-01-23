@@ -125,7 +125,7 @@ export default {
       required: true,
     },
     selectType: {
-      // 单选'single' / 多选'multi'
+      // 单选'single' / 多选'multiple'
       type: String,
       required: true,
     },
