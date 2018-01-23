@@ -5,13 +5,11 @@
         el-input(v-model="formItem.label")
       el-form-item(label="键名")
         el-input(:value="formItem.key" readonly)
+      el-form-item(label="多选")
+        el-switch(:value="formItem.multiple" @input="handleTypeChange")
       el-form-item(label="默认值")
-        el-select(v-model="formItem.value" :multiple="true")
+        el-select(v-model="formItem.value" clearable :multiple="formItem.multiple")
           el-option(v-for="o in formItem.options" :key="o.value" :label="o.label" :value="o.value")
-      el-form-item(label="显示边框")
-        el-switch(v-model="formItem.border")
-      el-form-item(label="按钮形状")
-        el-switch(v-model="formItem.button")
 
     editor-options(:itemOptions="formItem.options")
 
@@ -33,5 +31,11 @@ export default {
       required: true,
     }
   },
+  methods: {
+    handleTypeChange(m) {
+      this.formItem.multiple = m
+      this.formItem.value = m ? [] : ''
+    }
+  }
 }
 </script>

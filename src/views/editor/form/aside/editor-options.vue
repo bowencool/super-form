@@ -10,7 +10,7 @@
 
 <template lang="pug">
   div.bowen-options
-    p.c666.text-center 选项配置[selectType={{selectType}}]
+    p.c666.text-center 选项配置
 
     div.c666(v-for="(opt,i) in itemOptions" :key="i")
 
@@ -35,7 +35,6 @@
 
       div(v-else)
         //- icon-svg(:icon="'checkbox'")
-        //- span {{defaultValue}}
         span {{opt.value}} --- {{opt.label}}
 
       el-button-group
@@ -100,7 +99,7 @@ export default {
   },
   data() {
     return {
-      editingIdx: -1, // 当前正在编辑的选项索引, -1没有正在编辑的, -2显示新增的控件
+      editingIdx: -1, // 当前正在编辑的选项索引, -1没有正在编辑的, -2正在"新增"
       editingOpt: {
         'value': '',
         'label': '',
@@ -108,31 +107,31 @@ export default {
       }
     }
   },
-  computed: {
-    defaultValue: {
-      get() {
-        console.log(this.value)
-        return this.value
-      },
-      set(newV) {
-        this.$emit('input', newV)
-      }
-    }
-  },
+  // computed: {
+  //   defaultValue: {
+  //     get() {
+  //       console.log(this.value)
+  //       return this.value
+  //     },
+  //     set(newV) {
+  //       this.$emit('input', newV)
+  //     }
+  //   }
+  // },
   props: {
     itemOptions: {
       type: Array,
       required: true,
     },
-    selectType: {
-      // 单选'single' / 多选'multiple'
-      type: String,
-      required: true,
-    },
-    value: {
-      // 默认值
-      required: true
-    }
+    // selectType: {
+    //   // 单选'single' / 多选'multiple'
+    //   type: String,
+    //   required: true,
+    // },
+    // value: {
+    //   // 默认值
+    //   required: true
+    // }
   }
 }
 </script>

@@ -6,14 +6,14 @@
       el-form-item(label="键名")
         el-input(:value="formItem.key" readonly)
       el-form-item(label="默认值")
-        el-select(v-model="formItem.value")
+        el-select(v-model="formItem.value" clearable)
           el-option(v-for="o in formItem.options" :key="o.value" :label="o.label" :value="o.value")
       el-form-item(label="显示边框")
         el-switch(v-model="formItem.border")
       el-form-item(label="按钮形状")
         el-switch(v-model="formItem.button")
 
-    editor-options(:itemOptions="formItem.options" select-type="single" v-model="formItem.value")
+    editor-options(:itemOptions="formItem.options")
 
     //- wtf?
     //- editor-rules(:item-rules.sync="formItem.rules" :item-type="formItem.type")

@@ -65,6 +65,7 @@ import EditorInput from './editors-item/input'
 import EditorSwitch from './editors-item/switch'
 import EditorRadio from './editors-item/radio'
 import EditorCheckbox from './editors-item/checkbox'
+import EditorSelect from './editors-item/select'
 
 export default {
   components: {
@@ -72,6 +73,7 @@ export default {
     EditorSwitch,
     EditorCheckbox,
     EditorRadio,
+    EditorSelect,
   },
   computed: {
     activeName: {

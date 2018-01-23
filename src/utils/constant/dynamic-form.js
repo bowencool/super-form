@@ -74,6 +74,23 @@ export default {
         { "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' }
       ]
     },
+    {
+      "type": 'select',
+      "label": '下拉',
+      "value": '',
+      "multiple": false,
+      "options": [
+        {
+          "value": 'opt1',
+          "label": '蒸羊羔',
+          "disabled": false
+        }
+      ],
+      "placeholder": '请选择',
+      "rules": [{
+        "required": true, "message": '请选择一项'
+      }]
+    },
     // {
     //   "type": 'rate',
     //   "label": '评分',
@@ -138,23 +155,6 @@ export default {
     //   "min": 0,
     //   "max": 99999,
     //   "append": '个',
-    // },
-    // {
-    //   "type": 'select',
-    //   "label": '下拉单选',
-    //   "key": 'select1',
-    //   "value": '',
-    //   options: [
-    //     {
-    //       "value": 'opt1',
-    //       "label": '蒸羊羔',
-    //       "disabled": false
-    //     }
-    //   ],
-    //   "placeholder": '请选择',
-    //   "rules": [{
-    //     required: true, message: '请选择一项'
-    //   }]
     // },
     // {
     //   "type": 'checkbox',

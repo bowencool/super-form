@@ -52,6 +52,18 @@
           :label="o.value"
           :border="item.border"
           disabled) {{o.label}}
+    // 下拉
+    el-select(
+      v-else-if="item.type==='select'"
+      :value="item.value"
+      :multiple="item.multiple"
+      disabled)
+      el-option(
+        v-for="o in item.options"
+        :key="o.value"
+        :label="o.label"
+        :value="o.value"
+        disabled)
 
     span(v-else) 未知控件类型
 
