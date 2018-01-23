@@ -33,6 +33,16 @@ export default {
       ],
     },
     {
+      "type": 'number', // number 类型目前采用的是"输入前"限制, 使用rules验证会出现bug
+      "label": '数字',
+      "value": 16,
+      "decimal1": 2, // 允许的小数位数
+      "min": 0,
+      "max": 99998,
+      "prepend": '￥', // String, 前缀
+      "append": '元', // String, 后缀（单位）
+    },
+    {
       "type": 'switch',
       "label": '开关',
       "appearance": "switch", // 外观, 'switch'开关(默认) / checkbox勾选
@@ -134,17 +144,6 @@ export default {
     //   "block": true,
     //   "min": 0,
     //   "max": 100,
-    // },
-    // {
-    //   "type": 'number', // number 类型目前采用的是"输入前"限制, 使用rules验证会出现bug
-    //   "label": '小数位数',
-    //   "key": 'money1',
-    //   "value": 16,
-    //   "decimal1": 2, // 允许的小数位数
-    //   "min": 0,
-    //   "max": 99998,
-    //   "prepend": '￥', // String, 前缀
-    //   // "append": '元', // String, 后缀（单位）
     // },
     // {
     //   "type": 'number',

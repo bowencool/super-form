@@ -4,7 +4,14 @@
     <!-- 这里一定不能用$attrs、$listeners, 因为这里要绑定key-->
     <!-- 但是又不能修改value，因为value是props -->
     <!-- 所以考虑拆分这里的v-model -->
-    <dynamic-form-item v-for="(item,i) in dynamicForm.formItemList" :key="i" :item="item" :value="value[item.key]" @input="handleInput($event, item.key)" :style="{'min-width':columnMinWidth}"></dynamic-form-item>
+    <dynamic-form-item
+      v-for="item in dynamicForm.formItemList"
+      :key="item.key"
+      v-if="value[item.key]!==undefined"
+      :item="item"
+      :value="value[item.key]"
+      @input="handleInput($event, item.key)"
+      :style="{'min-width':columnMinWidth}"></dynamic-form-item>
 
     <slot/>
 

@@ -18,9 +18,7 @@ export default {
     prepend: {
       type: String
     },
-    decimal1: {
-      type: Number
-    },
+    decimal1: {},
     min: {
       type: Number,
       default: -Infinity
@@ -31,7 +29,7 @@ export default {
     }
   },
   mounted() {
-    this.formatValue()
+    this.$nextTick(this.formatValue)
   },
   methods: {
     handleInput(value) {
@@ -60,7 +58,7 @@ export default {
       }, 0)
     },
     format(number) {
-      if (this.decimal1 === undefined) return number
+      if (this.decimal1 === undefined || this.decimal1 === null) return number
       return (Math.trunc(number * 1000000000000) / 1000000000000).toFixed(this.decimal1)
     },
     parse(newString, oldNumber) {

@@ -11,7 +11,7 @@
       el-form-item(label="占位文本")
         el-input(v-model="formItem.placeholder")
       el-form-item(label="键名")
-        el-input(:value="formItem.key" readonly)
+        el-input(:value="formItem.key")
       el-form-item(label="默认值")
         el-input(v-model="formItem.value" :type="formItem.subtype")
       el-form-item(label="禁用")

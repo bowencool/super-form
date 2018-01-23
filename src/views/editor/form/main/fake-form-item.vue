@@ -9,6 +9,14 @@
       :placeholder="item.placeholder"
       :autosize="item.autosize"
       :value="item.value")
+    //- 数字
+    el-input(
+      v-if="item.type==='number'"
+      :disabled="true"
+      :value="item.value"
+    )
+      template(v-if="item.append" slot="append") {{item.append}}
+      template(v-if="item.prepend" slot="prepend") {{item.prepend}}
     //- 开关
     el-checkbox(
       v-else-if="item.type==='switch' && item.appearance==='checkbox'"

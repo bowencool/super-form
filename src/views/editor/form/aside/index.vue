@@ -62,6 +62,7 @@
 <script>
 import guid from '@/utils/guid'
 import EditorInput from './editors-item/input'
+import EditorNumber from './editors-item/number'
 import EditorSwitch from './editors-item/switch'
 import EditorRadio from './editors-item/radio'
 import EditorCheckbox from './editors-item/checkbox'
@@ -74,6 +75,7 @@ export default {
     EditorCheckbox,
     EditorRadio,
     EditorSelect,
+    EditorNumber,
   },
   computed: {
     activeName: {
