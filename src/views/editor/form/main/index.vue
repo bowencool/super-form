@@ -1,7 +1,7 @@
 <template lang="pug">
   el-main
     fake-form(:dynamicForm="currentForm")
-    pre {{currentForm}}
+    //- pre {{currentForm}}
 </template>
 
 <script>

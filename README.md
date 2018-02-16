@@ -1,21 +1,20 @@
-# super-form
+# 超级表单
 
-> A Vue.js project
+> `表单` `表格` `图表` 可视化配置以及实时预览。
 
-## Build Setup
+## 拖拽排序
+ ![draggable](./src/gifs/drag.gif)
+## 实时编辑预览
+ ![editable](./src/gifs/live.gif)
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## TODO
+- [x] 为文本框配置`SQL`验证
+- [ ] 地区级联选择
+- [ ] 为options(单选多选等)配置Ajax接口
+- [ ] 富文本
+- [ ] 文件上传
+- [ ] 表格
+- [ ] 图表
+<!-- - [ ] 为options集成 `默认值` 功能 -->
+<!-- - [ ] 下拉框可搜索 -->
+<!-- - [ ] 允许添加多条`RegExp`, `SQL`验证规则 -->

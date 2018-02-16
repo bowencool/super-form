@@ -89,10 +89,12 @@ export default {
     "type": 'date',
     // "subtype": 'year',
     // "label": '年',
-    // "value": null, // 时间和日期默认值只能是具体时间、null、undefined(不填), 不能用空字符串
+    "value": null,
     // "valueFormat": 'yyyy', // 默认为Date对象, 形如"2017-12-12T05:39:34.000Z"
     // "viewFormat": 'yyyy年', // 显示在输入框中的格式, 如不填写, 则使用valueFormat, 仅 type=date 有效
-    "rules": [],
+    "rules": [
+      { required: "true", message: "此项为必填项" }
+    ],
     "placeholder": '请选择'
   },
   // {
