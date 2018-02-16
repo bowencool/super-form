@@ -1,8 +1,9 @@
 <template lang="pug">
   div
     dynamic-form(:dynamicForm="$store.state.forms.qry" v-model="hehe" ref="form-preview")
-    el-button(@click='validate' type="primary") validate
-    pre {{hehe}}
+    el-button(@click='validate' type="primary") 测试验证
+    p 表单数据：
+      pre {{hehe}}
 </template>
 
 <script>

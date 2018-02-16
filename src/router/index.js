@@ -39,7 +39,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/preview'
+      redirect: '/editor'
     },
   ]
 })

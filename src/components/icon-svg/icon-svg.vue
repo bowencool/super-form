@@ -5,8 +5,8 @@
 
 <style lang="less">
 .icon-svg {
-  width: 1em;
-  height: 1em;
+  width: 0.9em;
+  height: 0.9em;
   vertical-align: -0.05em;
   fill: currentColor;
   overflow: hidden;
