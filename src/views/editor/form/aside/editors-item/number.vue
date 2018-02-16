@@ -8,7 +8,7 @@
       el-form-item(label="后缀")
         el-input(v-model="formItem.append")
       el-form-item(label="键名")
-        el-input(:value="formItem.key")
+        el-input(:value="formItem.key" readonly)
       el-form-item(label="默认值")
         el-input-number(v-model="formItem.value" controls-position="right")
       el-form-item(label="最小值")

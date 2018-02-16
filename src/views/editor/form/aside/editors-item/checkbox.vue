@@ -4,7 +4,7 @@
       el-form-item(label="标签名")
         el-input(v-model="formItem.label")
       el-form-item(label="键名")
-        el-input(:value="formItem.key")
+        el-input(:value="formItem.key" readonly)
       el-form-item(label="默认值")
         el-select(v-model="formItem.value" :multiple="true")
           el-option(v-for="o in formItem.options" :key="o.value" :label="o.label" :value="o.value")

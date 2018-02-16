@@ -85,6 +85,16 @@ export default {
     "placeholder": '请选择',
     "rules": []
   },
+  "date": {
+    "type": 'date',
+    // "subtype": 'year',
+    // "label": '年',
+    // "value": null, // 时间和日期默认值只能是具体时间、null、undefined(不填), 不能用空字符串
+    // "valueFormat": 'yyyy', // 默认为Date对象, 形如"2017-12-12T05:39:34.000Z"
+    // "viewFormat": 'yyyy年', // 显示在输入框中的格式, 如不填写, 则使用valueFormat, 仅 type=date 有效
+    "rules": [],
+    "placeholder": '请选择'
+  },
   // {
   //   "type": 'rate',
   //   "label": '评分',
@@ -157,16 +167,6 @@ export default {
   //   "placeholder": '请选择',
   //   "rules": [{ "required": true, "type": 'array', "min": 1, "message": '请选择' }]
   // },
-  "date": {
-    "type": 'date',
-    // "subtype": 'year',
-    // "label": '年',
-    // "value": null, // 时间和日期默认值只能是具体时间、null、undefined(不填), 不能用空字符串
-    // "valueFormat": 'yyyy', // 默认为Date对象, 形如"2017-12-12T05:39:34.000Z"
-    // "viewFormat": 'yyyy年', // 显示在输入框中的格式, 如不填写, 则使用valueFormat, 仅 type=date 有效
-    "rules": [],
-    "placeholder": '请选择'
-  },
   // {
   //   "type": 'time',
   //   "label": '时间',
@@ -185,21 +185,4 @@ export default {
   //   // "value": null, // 返回格式: ['00:00', '00:00']
   //   "rules": [{ "type": "array", "required": true, "message": '请选择一个时间范围' }]
   // },
-  // {
-  //   "type": 'date',
-  //   "subtype": 'daterange',
-  //   "label": '日期范围',
-  //   "key": 'daterange1',
-  //   "valueFormat": 'yyyy-MM-dd',
-  //   "rules": [{ "required": true, "message": '请选择' }]
-  // },
-  // {
-  //   "type": 'date',
-  //   "subtype": 'datetimerange',
-  //   "label": '日期时间',
-  //   "key": 'datetimerange1',
-  //   "valueFormat": 'yyyy-MM-dd HH:mm:ss',
-  //   "rules": [{ "required": true, "message": '请选择' }]
-  // },
-
 }
