@@ -15,7 +15,7 @@
 
     //- wtf?
     //- editor-rules(:item-rules.sync="formItem.rules" :item-type="formItem.type")
-    editor-rules(:item-rules="formItem.rules" @update:item-rules="n => formItem.rules = n" :item-type="formItem.type")
+    editor-rules(:item-rules="formItem.rules" @update:item-rules="n => formItem.rules = n" :item-type="formItem.type" :types="formItem.multiple?'required,length':'required'")
 
     pre {{formItem}}
 </template>
@@ -35,6 +35,7 @@ export default {
     handleTypeChange(m) {
       this.formItem.multiple = m
       this.formItem.value = m ? [] : ''
+      this.formItem.rules = []
     }
   }
 }

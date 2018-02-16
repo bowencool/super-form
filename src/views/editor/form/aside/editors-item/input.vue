@@ -21,7 +21,7 @@
 
     //- wtf?
     //- editor-rules(:item-rules.sync="formItem.rules" :item-type="formItem.type")
-    editor-rules(:item-rules="formItem.rules" @update:item-rules="n => formItem.rules = n" :item-type="formItem.type")
+    editor-rules(:item-rules="formItem.rules" @update:item-rules="n => formItem.rules = n" :item-type="formItem.type" types="required,length,regexp,sql")
 
     pre {{formItem}}
 </template>

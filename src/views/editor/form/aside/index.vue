@@ -102,6 +102,7 @@ export default {
     addItem(item) {
       const key = guid()
       this.currentForm.formItemList.push({ ...item, key })
+      // todo 在这里做好子类型选择
       this.$store.commit('SELECT_ITEM', key)
     }
   }
