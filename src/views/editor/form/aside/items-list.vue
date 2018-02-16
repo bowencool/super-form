@@ -55,6 +55,37 @@
       <icon-svg icon="select" />
       <span>下拉</span>
     </el-tag>
+    <!-- 日期 -->
+    <el-popover ref="popdate" v-model="popDate">
+      <div>选择模式：</div>
+      <el-button-group>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('date', {subtype:'year',label:'年份',valueFormat:'yyyy'}),popDate = false"
+          >年份</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('date', {subtype:'month',label:'月份',valueFormat:'yyyy-MM'}),popDate = false"
+          >月份</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('date', {subtype:'date',label:'日期',valueFormat:'yyyy-MM-dd'}),popDate = false"
+          >日期</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('date', {subtype:'datetime',label:'日期时间',valueFormat:'yyyy-MM-dd HH:mm:ss'}),popDate = false"
+          >日期时间</el-button>
+        </el-button-group>
+        <div>范围：</div>
+        <el-button-group>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('date', {subtype:'daterange',label:'日期范围',valueFormat:'yyyy-MM-dd'}),popDate = false"
+          >日期范围</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('date', {subtype:'datetimerange',label:'日期时间范围',valueFormat:'yyyy-MM-dd hh:mm:ss a'}),popDate = false"
+          >日期时间范围</el-button>
+      </el-button-group>
+    </el-popover>
+    <el-tag class="item" v-popover:popdate>
+      <i class="el-icon-date"></i>
+      <span>日期</span>
+    </el-tag>
   </div>
 </template>
 
@@ -65,6 +96,7 @@
     data() {
       return {
         popInput: false,
+        popDate: false,
         popSelect: false,
       }
     },

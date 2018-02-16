@@ -9,7 +9,8 @@
     padding: 10px;
     text-align: center;
     margin: 5px;
-    .icon-svg {
+    .icon-svg,
+    [class^=el-icon] {
       width: 1.3em;
       height: 1.3em;
     }
@@ -57,6 +58,7 @@ import EditorSwitch from './editors-item/switch'
 import EditorRadio from './editors-item/radio'
 import EditorCheckbox from './editors-item/checkbox'
 import EditorSelect from './editors-item/select'
+import EditorDate from './editors-item/date'
 
 export default {
   components: {
@@ -66,6 +68,7 @@ export default {
     EditorCheckbox,
     EditorRadio,
     EditorSelect,
+    EditorDate,
     EditorNumber,
   },
   computed: {

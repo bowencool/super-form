@@ -33,9 +33,9 @@
             icon="el-icon-error"
             @click="editingIdx=-1")
 
-      div(v-else)
+      span(v-else)
         //- icon-svg(:icon="'checkbox'")
-        span {{opt.value}} --- {{opt.label}}
+        span {{opt.value}}/{{opt.label}}
 
       el-button-group
         el-button(

@@ -130,48 +130,6 @@ export default {
   //   "max": 100,
   // },
   // {
-  //   "type": 'number',
-  //   "label": '显示单位',
-  //   "key": 'count1',
-  //   "value": 68,
-  //   "decimal1": 0,
-  //   "min": 0,
-  //   "max": 99999,
-  //   "append": '个',
-  // },
-  // {
-  //   "type": 'checkbox',
-  //   "label": '显示边框',
-  //   "key": 'multiSelect1',
-  //   "value": [],
-  //   "border": true,
-  //   options: [
-  //     {
-  //       "value": 'opt1',
-  //       "label": '蒸羊羔',
-  //       "disabled": false
-  //     }
-  //   ],
-  //   "rules": [{ "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' }]
-  // },
-  // {
-  //   "type": 'select',
-  //   "label": '下拉多选',
-  //   "key": 'multiSelect1',
-  //   "multiple": true,
-  //   // "multipleLimit": 2, // 多选时用户最多可以选择的项目数，为 0 则不限制
-  //   "value": [],
-  //   options: [
-  //     {
-  //       "value": 'opt1',
-  //       "label": '蒸羊羔',
-  //       "disabled": false
-  //     }
-  //   ],
-  //   "placeholder": '请选择',
-  //   "rules": [{ "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' }]
-  // },
-  // {
   //   "type": 'cascader',
   //   "label": '级联选择',
   //   "key": 'cascader1',
@@ -199,46 +157,16 @@ export default {
   //   "placeholder": '请选择',
   //   "rules": [{ "required": true, "type": 'array', "min": 1, "message": '请选择' }]
   // },
-  // {
-  //   "type": 'date',
-  //   "subtype": 'year',
-  //   "label": '年',
-  //   "key": 'year1',
-  //   // "value": null, // 时间和日期默认值只能是具体时间、null、undefined(不填), 不能用空字符串
-  //   "valueFormat": 'yyyy', // 默认为Date对象, 形如"2017-12-12T05:39:34.000Z"
-  //   "viewFormat": 'yyyy年', // 显示在输入框中的格式, 如不填写, 则使用valueFormat, 仅 type=date 有效
-  //   "rules": [{ "required": true, "message": '请选择年份', "trigger": 'blur' }],
-  //   "placeholder": '选择年'
-  // },
-  // {
-  //   "type": 'date',
-  //   "subtype": 'month',
-  //   "label": '月',
-  //   "key": 'month1',
-  //   "valueFormat": 'yyyy-MM',
-  //   "viewFormat": 'yyyy年MM月',
-  //   "rules": [{ "required": true, "message": '请选择' }],
-  //   "placeholder": '选择月'
-  // },
-  // // {
-  // //   "type": 'date',
-  // //   "subtype": 'week',
-  // //   "label": '周',
-  // //   "key": 'week1',
-  // //   // "valueFormat": 'yyyy,WW', // 选择周时,valueFormat会使viewFormat失效https://github.com/ElemeFE/element/issues/8783
-  // //   "viewFormat": 'yyyy年 第WW周',
-  // //   "rules": [{ "required": true, "message": '请选择' }],
-  // //   "placeholder": '选择周'
-  // // },
-  // {
-  //   "type": 'date',
-  //   "subtype": 'date',
-  //   "label": '日期',
-  //   "key": 'date2',
-  //   "valueFormat": 'yyyy-MM-dd',
-  //   "placeholder": '选择日期',
-  //   "rules": [{ "required": true, "message": '请选择一个日期' }]
-  // },
+  "date": {
+    "type": 'date',
+    // "subtype": 'year',
+    // "label": '年',
+    // "value": null, // 时间和日期默认值只能是具体时间、null、undefined(不填), 不能用空字符串
+    // "valueFormat": 'yyyy', // 默认为Date对象, 形如"2017-12-12T05:39:34.000Z"
+    // "viewFormat": 'yyyy年', // 显示在输入框中的格式, 如不填写, 则使用valueFormat, 仅 type=date 有效
+    "rules": [],
+    "placeholder": '请选择'
+  },
   // {
   //   "type": 'time',
   //   "label": '时间',
@@ -246,15 +174,6 @@ export default {
   //   "valueFormat": 'HH:mm:ss A',
   //   "placeholder": '选择时间',
   //   "rules": [{ "required": true, "message": '请选择一个时间' }]
-  // },
-  // {
-  //   "type": 'date',
-  //   "subtype": 'datetime',
-  //   "label": '日期时间',
-  //   "key": 'datetime1',
-  //   "valueFormat": 'yyyy-MM-dd HH:mm:ss',
-  //   "placeholder": '选择日期和时间',
-  //   "rules": [{ "required": true, "message": '请选择' }]
   // },
   // {
   //   "type": 'time',

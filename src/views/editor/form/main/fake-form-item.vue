@@ -72,6 +72,18 @@
         :label="o.label"
         :value="o.value"
         disabled)
+    //- 日期
+    el-date-picker(
+      v-else-if="item.type==='date'"
+      :disabled="true"
+      :type="item.subtype"
+      :value-format="item.valueFormat"
+      :format="item.viewFormat||item.valueFormat"
+      range-separator="至"
+      start-placeholder="开始时间"
+      end-placeholder="结束时间"
+      :placeholder="item.placeholder"
+      :value="item.value")
 
     span(v-else) 未知控件类型
 
