@@ -5,8 +5,6 @@
         el-input(v-model="formItem.label")
       el-form-item(label="键名")
         el-input(:value="formItem.key")
-      el-form-item(label="多选")
-        el-switch(:value="formItem.multiple" @input="handleTypeChange")
       el-form-item(label="默认值")
         el-select(v-model="formItem.value" clearable :multiple="formItem.multiple")
           el-option(v-for="o in formItem.options" :key="o.value" :label="o.label" :value="o.value")
@@ -31,12 +29,5 @@ export default {
       required: true,
     }
   },
-  methods: {
-    handleTypeChange(m) {
-      this.formItem.multiple = m
-      this.formItem.value = m ? [] : ''
-      this.formItem.rules = []
-    }
-  }
 }
 </script>

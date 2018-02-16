@@ -1,11 +1,6 @@
 <template lang="pug">
   div
     el-form(v-on="$listeners" v-bind="$attrs")
-      el-form-item(label="类型")
-        el-radio-group(v-model="formItem.subtype")
-          el-radio-button(label="text") 文本
-          el-radio-button(label="password") 密码
-          el-radio-button(label="textarea") 多行文本
       el-form-item(label="标签名")
         el-input(v-model="formItem.label")
       el-form-item(label="占位文本")

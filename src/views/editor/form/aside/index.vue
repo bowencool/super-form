@@ -1,12 +1,6 @@
 <style lang="less">
 .bowen-aside {
   background-color: rgb(238, 241, 246);
-  .el-card {
-    background-color: inherit;
-    .el-card__body {
-      padding: 0 5px;
-    }
-  }
   .el-tag.item {
     cursor: pointer;
     font-size: 14px;
@@ -34,22 +28,18 @@
     el-tabs(v-model="activeName")
 
       el-tab-pane(label="添加组件" name="items-list")
-        el-card
-          el-tag.item(v-for="(item,i) in require('@/utils/constant').DYNAMIC_FORM.formItemList" :key="i" @click.native="addItem(item)")
-            icon-svg(:icon="item.type")
-            span {{item.label}}
+        items-list(@add="addItem")
 
       el-tab-pane(label="组件配置" name="item-config")
-        el-card
-          component(
-            v-if="selectedItem"
-            :is="`editor-${selectedItem.type}`"
-            :form-item="selectedItem"
-            size="mini"
-            label-position="right"
-            label-width="70px"
-          )
-          p(v-else) 先选择一个组件
+        component(
+          v-if="selectedItem"
+          :is="`editor-${selectedItem.type}`"
+          :form-item="selectedItem"
+          size="mini"
+          label-position="right"
+          label-width="70px"
+        )
+        p(v-else) 先选择一个组件
 
       el-tab-pane(label="全局配置" name="global-config")
         dynamic-form(:dynamicForm="require('./editor-global.json')" v-model="currentForm")
@@ -60,7 +50,7 @@
 </template>
 
 <script>
-import guid from '@/utils/guid'
+import ItemsList from './items-list'
 import EditorInput from './editors-item/input'
 import EditorNumber from './editors-item/number'
 import EditorSwitch from './editors-item/switch'
@@ -70,6 +60,7 @@ import EditorSelect from './editors-item/select'
 
 export default {
   components: {
+    ItemsList,
     EditorInput,
     EditorSwitch,
     EditorCheckbox,
@@ -98,12 +89,15 @@ export default {
       return this.currentForm.formItemList.find(item => item.key === this.$store.state.itemKey)
     },
   },
+  data() {
+    return {
+      popInput: false,
+    }
+  },
   methods: {
     addItem(item) {
-      const key = guid()
-      this.currentForm.formItemList.push({ ...item, key })
-      // todo 在这里做好子类型选择
-      this.$store.commit('SELECT_ITEM', key)
+      this.currentForm.formItemList.push(item)
+      this.$store.commit('SELECT_ITEM', item.key)
     }
   }
 }
