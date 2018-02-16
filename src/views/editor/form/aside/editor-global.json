@@ -1,5 +1,5 @@
 {
-  "inline": true,
+  "inline": false,
   "labelPosition": "right",
   "labelWidth": "70px",
   "size": "mini",
@@ -17,7 +17,7 @@
       "label": "标签宽度",
       "key": "labelWidth",
       "value": "",
-      "placeholder": "标签宽度(可不填)"
+      "placeholder": "css width属性, 可不填, 但会影响对齐"
     },
     {
       "type": "radio",
@@ -48,7 +48,7 @@
       "options": [
         {
           "value": "",
-          "label": "(默认)"
+          "label": "默认"
         },
         {
           "value": "medium",

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="c666">
     <!-- 文本 -->
     <el-popover ref="popinput" v-model="popInput">
       <div>选择一个类型：</div>
@@ -56,6 +56,7 @@
       <span>下拉</span>
     </el-tag>
     <!-- 日期 -->
+    <!-- http://element-cn.eleme.io/#/zh-CN/component/date-picker -->
     <el-popover ref="popdate" v-model="popDate">
       <div>选择模式：</div>
       <el-button-group>
@@ -71,9 +72,9 @@
         <el-button size="mini" type="primary" plain
           @click="addItem('date', {subtype:'datetime',label:'日期时间',valueFormat:'yyyy-MM-dd HH:mm:ss'}),popDate = false"
           >日期时间</el-button>
-        </el-button-group>
-        <div>范围：</div>
-        <el-button-group>
+      </el-button-group>
+      <div>范围：</div>
+      <el-button-group>
         <el-button size="mini" type="primary" plain
           @click="addItem('date', {subtype:'daterange',label:'日期范围',valueFormat:'yyyy-MM-dd'}),popDate = false"
           >日期范围</el-button>
