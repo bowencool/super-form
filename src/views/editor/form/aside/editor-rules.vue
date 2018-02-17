@@ -141,7 +141,7 @@ export default {
         pattern: this.itemRules[idx].pattern,
       } : {
         enable: false,
-        pattern: '',
+        pattern: '^\\w+$',
       }
     },
     // SQL
@@ -152,7 +152,7 @@ export default {
         sql: this.itemRules[idx].sql,
       } : {
         enable: false,
-        sql: '',
+        sql: 'SELECT {key} FORM BALABALA',
       }
     },
   },

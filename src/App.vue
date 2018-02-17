@@ -10,13 +10,17 @@
         </el-submenu>
         <el-menu-item index="/preview">预览</el-menu-item>
       </el-menu>
+      <theme-picker id="theme-picker"/>
     </el-header>
     <router-view/>
   </el-container>
 </template>
 
 <script>
-export default {}
+import ThemePicker from '@/components/themePicker'
+export default {
+  components: { ThemePicker }
+}
 </script>
 
 <style lang="less">
@@ -28,17 +32,17 @@ body,
   height: 100%;
 }
 .el-header {
-  padding: 0;
+  padding: 0!important;
 }
-// .clear-fix:after {
-//   display: table;
-//   clear: both;
-//   content: ' ';
-// }
 .text-center {
   text-align: center;
 }
 .c666 {
   color: #606266;
+}
+#theme-picker {
+  position: fixed;
+  right: 10px;
+  top: 10px;
 }
 </style>
