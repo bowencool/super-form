@@ -8,7 +8,11 @@
       el-form-item(label="占位文本")
         el-input(v-model="formItem.placeholder")
       el-form-item(label="默认值")
-        el-cascader(v-model="formItem.value" :options="formItem.options||require('element-china-area-data')[formItem.areaShortcut]")
+        el-cascader(v-model="formItem.value" :options="formItem.options||require('element-china-area-data')[formItem.areaShortcut]" :clearable="true")
+      el-form-item(label="禁用")
+        el-checkbox(v-model="formItem.disabled")
+      //- el-form-item(label="可搜索") todo
+      //-   el-checkbox(v-model="formItem.filterable")
 
     editor-rules(:item-rules="formItem.rules" @update:item-rules="n => formItem.rules = n" :item-type="formItem.type" types="required")
 

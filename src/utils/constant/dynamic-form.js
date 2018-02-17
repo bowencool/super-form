@@ -74,6 +74,7 @@ export default {
     "type": 'select',
     "label": '下拉',
     "value": '',
+    "disabled": false,
     "multiple": false,
     "options": [
       {
@@ -90,6 +91,7 @@ export default {
     // "subtype": 'year',
     // "label": '年',
     "value": null,
+    "disabled": false,
     // "valueFormat": 'yyyy', // 默认为Date对象, 形如"2017-12-12T05:39:34.000Z"
     // "viewFormat": 'yyyy年', // 显示在输入框中的格式, 如不填写, 则使用valueFormat, 仅 type=date 有效
     "rules": [
@@ -100,6 +102,8 @@ export default {
   "cascader": {
     "type": 'cascader',
     "label": '级联选择',
+    "disabled": false,
+    "filterable": false,
     "value": null,
     "placeholder": '请选择',
     "rules": [

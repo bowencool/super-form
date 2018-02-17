@@ -19,6 +19,8 @@
           start-placeholder="开始时间"
           end-placeholder="结束时间"
           v-model="formItem.value")
+      el-form-item(label="禁用")
+        el-checkbox(v-model="formItem.disabled")
     editor-rules(:item-rules="formItem.rules" @update:item-rules="n => formItem.rules = n" :item-type="formItem.type" types="required")
 
     pre {{formItem}}

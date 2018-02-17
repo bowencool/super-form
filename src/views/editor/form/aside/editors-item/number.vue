@@ -19,9 +19,9 @@
         el-checkbox(:value="formItem.decimal1!==null" @input="handleDecimal")
         el-input-number(v-if="formItem.decimal1!==null" v-model="formItem.decimal1" controls-position="right")
       el-form-item(label="禁用")
-        el-switch(v-model="formItem.disable")
-      el-form-item(label="只读")
-        el-switch(v-model="formItem.readonly")
+        el-checkbox(v-model="formItem.disabled")
+      //- el-form-item(label="只读")
+      //-   el-switch(v-model="formItem.readonly")
 
     pre {{formItem}}
 </template>

@@ -6,11 +6,14 @@
       el-form-item(label="键名")
         el-input(:value="formItem.key" readonly)
       el-form-item(label="默认值")
-        el-switch(v-model="formItem.value")
+        el-checkbox(v-if="formItem.appearance==='checkbox'" v-model="formItem.value")
+        el-switch(v-else v-model="formItem.value")
       el-form-item(label="形状")
         el-radio-group(v-model="formItem.appearance")
           el-radio-button(label="checkbox") 复选框
           el-radio-button(label="switch") 开关
+      el-form-item(label="禁用")
+        el-checkbox(v-model="formItem.disabled")
 
     pre {{formItem}}
 </template>

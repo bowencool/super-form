@@ -1,6 +1,6 @@
 <template>
   <!-- <input :value="value" @input="updateValue" @focus="selectAll" @blur="formatValue" class="el-input__inner"> -->
-  <el-input :value="value" @input="handleInput" @focus="selectAll" @blur="formatValue">
+  <el-input :value="value" @input="handleInput" @focus="selectAll" @blur="formatValue" :disabled="disabled">
     <template v-if="prepend" slot="prepend">{{prepend}}</template>
     <template v-if="append" slot="append">{{append}}</template>
   </el-input>
@@ -26,6 +26,10 @@ export default {
     max: {
       type: Number,
       default: Infinity
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {

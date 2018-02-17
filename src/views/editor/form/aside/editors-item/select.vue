@@ -8,6 +8,8 @@
       el-form-item(label="默认值")
         el-select(v-model="formItem.value" clearable :multiple="formItem.multiple")
           el-option(v-for="o in formItem.options" :key="o.value" :label="o.label" :value="o.value")
+      el-form-item(label="禁用")
+        el-checkbox(v-model="formItem.disabled")
 
     editor-options(:itemOptions="formItem.options")
 
