@@ -84,6 +84,14 @@
       end-placeholder="结束时间"
       :placeholder="item.placeholder"
       :value="item.value")
+    //- 级联
+    el-cascader(
+      v-else-if="item.type==='cascader'"
+      :disabled="true"
+      :options="item.options||require('element-china-area-data')[item.areaShortcut]"
+      :placeholder="item.placeholder"
+      :value="item.value"
+    )
 
     span(v-else) 未知控件类型
 

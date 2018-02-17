@@ -59,17 +59,19 @@ import EditorRadio from './editors-item/radio'
 import EditorCheckbox from './editors-item/checkbox'
 import EditorSelect from './editors-item/select'
 import EditorDate from './editors-item/date'
+import EditorCascader from './editors-item/cascader'
 
 export default {
   components: {
     ItemsList,
     EditorInput,
+    EditorNumber,
     EditorSwitch,
-    EditorCheckbox,
     EditorRadio,
+    EditorCheckbox,
     EditorSelect,
     EditorDate,
-    EditorNumber,
+    EditorCascader,
   },
   computed: {
     activeName: {

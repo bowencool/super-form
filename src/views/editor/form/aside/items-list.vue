@@ -87,6 +87,34 @@
       <i class="el-icon-date"></i>
       <span>日期</span>
     </el-tag>
+    <!-- 级联 -->
+    <!-- https://github.com/Plortinus/element-china-area-data -->
+    <el-popover ref="popcascader" v-model="popCascader">
+      <div>常用：</div>
+      <el-button-group>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('cascader', {areaShortcut:'provinceAndCityData'}),popCascader = false"
+          >省/市</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('cascader', {areaShortcut:'regionData'}),popCascader = false"
+          >省/市/区</el-button>
+      </el-button-group>
+      <el-button-group>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('cascader', {areaShortcut:'provinceAndCityDataPlus'}),popCascader = false"
+          >省/市(带"全部")</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('cascader', {areaShortcut:'regionDataPlus'}),popCascader = false"
+          >省/市/区(带"全部")</el-button>
+      </el-button-group>
+      <el-button size="mini" type="primary" plain
+        @click="$message('暂不支持')"
+        >自定义</el-button>
+    </el-popover>
+    <el-tag class="item" v-popover:popcascader>
+      <icon-svg icon="cascader" />
+      <span>级联</span>
+    </el-tag>
   </div>
 </template>
 
@@ -99,6 +127,7 @@
         popInput: false,
         popDate: false,
         popSelect: false,
+        popCascader: false,
       }
     },
     methods: {

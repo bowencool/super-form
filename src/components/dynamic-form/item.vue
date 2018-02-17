@@ -52,7 +52,7 @@
       </el-option>
     </el-select>
 
-    <el-cascader v-else-if="item.type==='cascader'" v-bind="$attrs" v-on="$listeners" :options="item.options||regionOptions"></el-cascader>
+    <el-cascader v-else-if="item.type==='cascader'" v-bind="$attrs" v-on="$listeners" :options="item.options||require('element-china-area-data')[item.areaShortcut]"></el-cascader>
 
     <el-time-picker v-else-if="item.type==='time'" :is-range="item.isRange" range-separator="至" start-placeholder="开始时间" end-placeholder="结束时间" :value-format="item.valueFormat" :format="item.valueFormat" :placeholder="item.placeholder" v-bind="$attrs" v-on="$listeners"></el-time-picker>
 
@@ -64,17 +64,11 @@
 </template>
 
 <script>
-import { regionDataPlus } from 'element-china-area-data'
 export default {
   props: {
     item: {
       type: Object,
       required: true
-    }
-  },
-  data() {
-    return {
-      regionOptions: regionDataPlus
     }
   },
   computed: {

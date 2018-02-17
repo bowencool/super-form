@@ -97,6 +97,36 @@ export default {
     ],
     "placeholder": '请选择'
   },
+  "cascader": {
+    "type": 'cascader',
+    "label": '级联选择',
+    "value": null,
+    "placeholder": '请选择',
+    "rules": [
+      { "required": true, "type": 'array', "min": 1, "message": '请选择' }
+    ],
+    // 如果没有配置options, 则默认处理为
+    // https://github.com/Plortinus/element-china-area-data
+    // "areaShortcut": "", // provinceAndCityData, regionData, provinceAndCityDataPlus, regionDataPlus
+    // "options": [
+    //   {
+    //     "value": '340000',
+    //     "label": '安徽省',
+    //     "children": [
+    //       {
+    //         "value": '340100',
+    //         "label": '合肥市',
+    //         "children": [
+    //           {
+    //             "value": '340104',
+    //             "label": '蜀山区'
+    //           }
+    //         ]
+    //       }
+    //     ]
+    //   }
+    // ],
+  },
   // {
   //   "type": 'rate',
   //   "label": '评分',
@@ -140,34 +170,6 @@ export default {
   //   "block": true,
   //   "min": 0,
   //   "max": 100,
-  // },
-  // {
-  //   "type": 'cascader',
-  //   "label": '级联选择',
-  //   "key": 'cascader1',
-  //   // "value": null, // 返回格式: [ "340000", "340100", "340104" ]
-  //   // 如果没有配置options, 则默认处理为“地区三级联动”(暂不考虑级别)
-  //   // https://github.com/Plortinus/element-china-area-data
-  //   /*"options": [
-  //     {
-  //       "value": '340000',
-  //       "label": '安徽省',
-  //       "children": [
-  //         {
-  //           "value": '340100',
-  //           "label": '合肥市',
-  //           "children": [
-  //             {
-  //               "value": '340104',
-  //               "label": '蜀山区'
-  //             }
-  //           ]
-  //         }
-  //       ]
-  //     }
-  //   ],*/
-  //   "placeholder": '请选择',
-  //   "rules": [{ "required": true, "type": 'array', "min": 1, "message": '请选择' }]
   // },
   // {
   //   "type": 'time',
