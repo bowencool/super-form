@@ -64,6 +64,21 @@
 </template>
 
 <script>
+const request = (url, method, body) => fetch(url, {
+  method,
+  body: JSON.stringify(body),
+  headers: {
+    'Content-Type': 'application/json; charset=utf-8'
+  },
+})
+  .then(response => {
+    if (response.status >= 200 && response.status < 300) {
+      return response.json()
+    } else {
+      throw new Error(response.statusText)
+    }
+  })
+
 export default {
   props: {
     item: {
@@ -81,12 +96,20 @@ export default {
       rules.forEach(rule => {
         if (rule.sql) {
           const validator = (rule2, value, callback) => {
-            /* eslint-disable */
-            setTimeout(callback, 1000)
-            // this.$post('/validate', { key: rule2.field, value, sql: rule.sql.replace(/{key}/ig, rule2.field) })
-            //   .then(res => {
-            //     callback(!res || undefined)
-            //   })
+            request('/api/validate', 'POST', {
+              key: rule2.field,
+              value,
+              sql: rule.sql.replace(/{key}/ig, rule2.field)
+            })
+              .then(res => {
+                // eslint-disable-next-line
+                callback(!res || undefined)
+              })
+              .catch(err => {
+                this.$message.error(err.message)
+                // eslint-disable-next-line
+                callback(false)
+              })
           }
 
           R.push({ validator, message: rule.message, trigger: 'blur' })
