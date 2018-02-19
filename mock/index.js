@@ -6,6 +6,11 @@ module.exports = {
   // },
   'GET /api/cascader/options': [
     {
+      "value": "1",
+      "label": "查看控制台",
+      "disabled": true,
+    },
+    {
       "value": '340000',
       "label": '安徽省',
       "children": [
@@ -21,28 +26,28 @@ module.exports = {
         }
       ]
     },
-    {
-      "value": "0",
-      "label": "禁用的选项",
-      "disabled": true,
-    }
   ],
   'GET /api/some/options': [
     {
       "value": "01",
-      "label": "蒸羊羔",
+      "label": "查",
     },
     {
       "value": "02",
-      "label": "蒸熊掌",
+      "label": "看",
     },
     {
       "value": "03",
-      "label": "蒸鹿尾儿",
+      "label": "控",
     },
     {
       "value": "04",
-      "label": "烧花鸭",
+      "label": "制",
+      "disabled": true
+    },
+    {
+      "value": "05",
+      "label": "台",
       "disabled": true
     },
   ],

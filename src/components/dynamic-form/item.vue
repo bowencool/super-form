@@ -101,9 +101,11 @@ export default {
     }
   },
   created() {
-    const { optionsUrl, key } = this.item
+    const { optionsUrl, key, type } = this.item
     if (optionsUrl) {
-      request(`${optionsUrl}?key=${key}`, 'GET')
+      const url = type === 'cascader' ? '/api/cascader/options' : '/api/some/options'
+      console.log(`本页面为模拟预览，已自动重定向到URL:${url}，查看Network以获取格式`)
+      request(`${url}?key=${key}`, 'GET')
         .then(res => {
           // this.item.options = res
           // this.$set(this.item, 'options', res)
