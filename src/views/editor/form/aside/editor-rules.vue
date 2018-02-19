@@ -38,6 +38,7 @@
 </template>
 
 <script>
+// todo message编辑，添加正则flag，允许添加多条regexp
 export default {
   methods: {
     handleValid1(newV) {
