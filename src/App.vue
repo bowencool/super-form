@@ -37,8 +37,14 @@ body,
 .text-center {
   text-align: center;
 }
+.text-right {
+  text-align: right;
+}
 .c666 {
   color: #606266;
+}
+.mt5 {
+  margin-top: 5px;
 }
 #theme-picker {
   position: fixed;

@@ -63,25 +63,19 @@
     </el-tag>
     <!-- 下拉 -->
     <el-popover ref="popselect" v-model="popSelect">
-      <!-- todo 预配置改为表单形式 -->
       <div>选择模式：</div>
-      <el-button-group>
-        <el-button size="mini" type="primary" plain
-          @click="addItem('select', {multiple:false,options:[]})"
-          >单选</el-button>
-        <el-button size="mini" type="primary" plain
-          @click="addItem('select', {multiple:true,options:[]})"
-          >多选</el-button>
-      </el-button-group>
-      <div>ajax源：</div>
-      <el-button-group>
-        <el-button size="mini" type="primary" plain
-          @click="addItem('select', {multiple:false,optionsUrl:'/api/some/options'})"
-          >单选</el-button>
-        <el-button size="mini" type="primary" plain
-          @click="addItem('select', {multiple:true,optionsUrl:'/api/some/options'})"
-          >多选</el-button>
-      </el-button-group>
+      <el-radio-group v-model="preConfigDataSelect.mode" size="mini">
+        <el-radio-button label="single">单选</el-radio-button>
+        <el-radio-button label="multiple">多选</el-radio-button>
+      </el-radio-group>
+      <div>数据来源：</div>
+      <el-radio-group v-model="preConfigDataSelect.source" size="mini">
+        <el-radio-button label="ajax">从服务器获取</el-radio-button>
+        <el-radio-button label="custom">自定义</el-radio-button>
+      </el-radio-group>
+      <div class="text-right mt5">
+        <el-button size="mini" plain round type="primary" @click="preAddSelect">选好了</el-button>
+      </div>
     </el-popover>
     <el-tag class="item" v-popover:popselect>
       <icon-svg icon="select" />
@@ -169,6 +163,10 @@
         popSelect: false,
         popDate: false,
         popCascader: false,
+        preConfigDataSelect: {
+          mode: 'multiple',
+          source: 'ajax',
+        },
       }
     },
     methods: {
@@ -183,6 +181,22 @@
         this.popSelect = false
         this.popDate = false
         this.popCascader = false
+      },
+      preAddSelect() {
+        const { mode, source } = this.preConfigDataSelect
+        const OPT = {
+          multiple: mode === 'multiple'
+        }
+        if (source === 'ajax') {
+          OPT.optionsUrl = '/api/some/options'
+        } else {
+          OPT.options = [{
+            'value': 'yaogao',
+            'label': '蒸羊羔',
+            'disabled': false
+          }]
+        }
+        this.addItem('select', OPT)
       }
     }
   }
