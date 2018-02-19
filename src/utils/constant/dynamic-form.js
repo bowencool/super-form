@@ -38,18 +38,18 @@ export default {
     "type": 'radio',
     "label": '单选',
     "value": '',
-    "options": [
-      {
-        "value": 'opt1',
-        "label": '蒸羊羔',
-        "disabled": false
-      }
-    ],
+    // "options": [
+    //   {
+    //     "value": 'opt1',
+    //     "label": '蒸羊羔',
+    //     "disabled": false
+    //   }
+    // ],
     "button": false, // 按钮形状, inline模式下推荐开启, 多选框checkbox同样有效
     "border": true, // (非按钮形式)显示边框, inline模式下推荐开启, 多选框checkbox同样有效
-    "rules": [{
-      "required": true, "message": '请选择一项', "trigger": 'blur'
-    }]
+    "rules": [
+      { "required": true, "message": '请选择一项', "trigger": 'blur' },
+    ],
   },
   "checkbox": {
     "type": 'checkbox',
@@ -59,16 +59,10 @@ export default {
     "button": false,
     // "max": 2, // 限制输入
     // "min": 1,
-    "options": [
-      {
-        "value": 'opt1',
-        "label": '蒸羊羔',
-        "disabled": false
-      }
-    ],
+    // "options": [],
     "rules": [
-      { "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' }
-    ]
+      { "type": "array", "required": true, "min": 1, "max": 2, "message": '请勾选1~2项' },
+    ],
   },
   "select": {
     "type": 'select',
@@ -76,15 +70,9 @@ export default {
     "value": '',
     "disabled": false,
     "multiple": false,
-    "options": [
-      {
-        "value": 'opt1',
-        "label": '蒸羊羔',
-        "disabled": false
-      }
-    ],
+    // "options": [],
     "placeholder": '请选择',
-    "rules": []
+    "rules": [],
   },
   "date": {
     "type": 'date',
@@ -107,29 +95,8 @@ export default {
     "value": null,
     "placeholder": '请选择',
     "rules": [
-      { "required": true, "type": 'array', "min": 1, "message": '请选择' }
+      { "required": true, "type": 'array', "min": 1, "message": '请选择' },
     ],
-    // 如果没有配置options, 则默认处理为
-    // https://github.com/Plortinus/element-china-area-data
-    // "areaShortcut": "", // provinceAndCityData, regionData, provinceAndCityDataPlus, regionDataPlus
-    // "options": [
-    //   {
-    //     "value": '340000',
-    //     "label": '安徽省',
-    //     "children": [
-    //       {
-    //         "value": '340100',
-    //         "label": '合肥市',
-    //         "children": [
-    //           {
-    //             "value": '340104',
-    //             "label": '蜀山区'
-    //           }
-    //         ]
-    //       }
-    //     ]
-    //   }
-    // ],
   },
   // {
   //   "type": 'rate',

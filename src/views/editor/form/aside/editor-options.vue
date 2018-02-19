@@ -10,7 +10,7 @@
 
 <template lang="pug">
   div.bowen-options
-    p.c666.text-center 选项配置
+    p.c666.text-center 选项配置[共{{itemOptions.length}}条]
 
     div.c666(v-for="(opt,i) in itemOptions" :key="i")
 
@@ -78,7 +78,7 @@
     el-button(
       @click="handlePreAdd"
       size="mini"
-      type="primary") 新增
+      type="primary") 添加选项
 </template>
 
 <script>

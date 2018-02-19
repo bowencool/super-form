@@ -5,13 +5,13 @@
       <div>选择一个类型：</div>
       <el-button-group>
         <el-button size="mini" type="primary" plain
-          @click="addItem('input', {subtype:'text'}),popInput = false"
+          @click="addItem('input', {subtype:'text'})"
           >普通文本</el-button>
         <el-button size="mini" type="primary" plain
-          @click="addItem('input', {subtype:'password'}),popInput = false"
+          @click="addItem('input', {subtype:'password'})"
           >密码</el-button>
         <el-button size="mini" type="primary" plain
-          @click="addItem('input', {subtype:'textarea'}),popInput = false"
+          @click="addItem('input', {subtype:'textarea'})"
           >文本域</el-button>
       </el-button-group>
     </el-popover>
@@ -30,24 +30,56 @@
       <span>开关</span>
     </el-tag>
     <!-- 单选 -->
-    <el-tag class="item" @click.native="addItem('radio')">
+    <el-popover ref="popradio" v-model="popRadio">
+      <div>选择数据来源：</div>
+      <el-button-group>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('radio', {optionsUrl:'/api/some/options'})"
+          >从服务器获取</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('radio', {options:[]})"
+          >自定义</el-button>
+      </el-button-group>
+    </el-popover>
+    <el-tag class="item" v-popover:popradio>
       <icon-svg icon="radio" />
       <span>单选</span>
     </el-tag>
     <!-- 多选 -->
-    <el-tag class="item" @click.native="addItem('checkbox')">
+    <el-popover ref="popcheckbox" v-model="popCheckbox">
+      <div>选择数据来源：</div>
+      <el-button-group>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('checkbox', {optionsUrl:'/api/some/options'})"
+          >从服务器获取</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('checkbox',{options:[]})"
+          >自定义</el-button>
+      </el-button-group>
+    </el-popover>
+    <el-tag class="item" v-popover:popcheckbox>
       <icon-svg icon="checkbox" />
       <span>多选</span>
     </el-tag>
     <!-- 下拉 -->
     <el-popover ref="popselect" v-model="popSelect">
+      <!-- todo 预配置改为表单形式 -->
       <div>选择模式：</div>
       <el-button-group>
         <el-button size="mini" type="primary" plain
-          @click="addItem('select', {multiple:false}),popSelect = false"
+          @click="addItem('select', {multiple:false,options:[]})"
           >单选</el-button>
         <el-button size="mini" type="primary" plain
-          @click="addItem('select', {multiple:true}),popSelect = false"
+          @click="addItem('select', {multiple:true,options:[]})"
+          >多选</el-button>
+      </el-button-group>
+      <div>ajax源：</div>
+      <el-button-group>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('select', {multiple:false,optionsUrl:'/api/some/options'})"
+          >单选</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('select', {multiple:true,optionsUrl:'/api/some/options'})"
           >多选</el-button>
       </el-button-group>
     </el-popover>
@@ -112,7 +144,7 @@
       <el-button-group>
         <el-button size="mini" type="primary" plain
           @click="addItem('cascader',{optionsUrl:'/api/cascader/options'})"
-          >从服务器请求</el-button>
+          >从服务器获取</el-button>
         <el-button size="mini" type="primary" plain
           @click="$message('暂不支持')"
           >自定义</el-button>
@@ -132,17 +164,25 @@
     data() {
       return {
         popInput: false,
-        popDate: false,
+        popRadio: false,
+        popCheckbox: false,
         popSelect: false,
+        popDate: false,
         popCascader: false,
       }
     },
     methods: {
       addItem(type, option) {
         const key = guid()
-        const newItem = {...DYNAMIC_FORM[type], key, ...option}
-        // console.log(newItem)
+        const newItem = {...JSON.parse(JSON.stringify(DYNAMIC_FORM[type])), key, ...option}
         this.$emit('add', newItem)
+
+        this.popInput = false
+        this.popRadio = false
+        this.popCheckbox = false
+        this.popSelect = false
+        this.popDate = false
+        this.popCascader = false
       }
     }
   }

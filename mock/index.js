@@ -27,6 +27,25 @@ module.exports = {
       "disabled": true,
     }
   ],
+  'GET /api/some/options': [
+    {
+      "value": "01",
+      "label": "蒸羊羔",
+    },
+    {
+      "value": "02",
+      "label": "蒸熊掌",
+    },
+    {
+      "value": "03",
+      "label": "蒸鹿尾儿",
+    },
+    {
+      "value": "04",
+      "label": "烧花鸭",
+      "disabled": true
+    },
+  ],
   'POST /api/validate': (req, res) => {
     res.json(/1$/.test(req.body.value))
   },

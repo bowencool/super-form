@@ -16,7 +16,6 @@
 </template>
 
 <script>
-// import request from '@/utils/request'
 export default {
   props: {
     dynamicForm: {
@@ -44,9 +43,6 @@ export default {
         if (formData[key] === undefined || formData[key] === null) {
           formData[key] = value
         }
-        // if (optionsUrl) {
-        //   console.log(optionsUrl)
-        // }
       })
       this.$emit('input', { ...formData })
     }
