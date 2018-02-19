@@ -22,30 +22,16 @@
     <el-slider v-else-if="item.type==='slider'" v-bind="$attrs" v-on="$listeners" :range="item.isRange" :show-stops="item.showStops" :step="item.step" :min="item.min" :max="item.max"></el-slider>
 
     <el-radio-group v-else-if="item.type==='radio'" v-bind="$attrs" v-on="$listeners">
-      <!-- todo 合并代码 -->
-      <template v-if="item.button">
-        <el-radio-button v-for="o in item.options||ajaxOptions" :key='o.value' :label="o.value" :disabled="o.disabled">{{o.label}}</el-radio-button>
-      </template>
-      <template v-else>
-        <el-radio v-for="o in item.options||ajaxOptions" :key='o.value' :label="o.value" :disabled="o.disabled" :border="item.border">{{o.label}}</el-radio>
-      </template>
+      <component :is="item.button?'el-radio-button':'el-radio'" v-for="o in item.options||ajaxOptions" :key='o.value' :label="o.value" :disabled="o.disabled" :border="item.border">{{o.label}}</component>
     </el-radio-group>
 
     <el-checkbox-group v-else-if="item.type==='checkbox'" :min="item.min" :max="item.max" v-bind="$attrs" v-on="$listeners">
-      <template v-if="item.button">
-        <el-checkbox-button
-          v-for="o in item.options||ajaxOptions"
-          :key='o.value'
-          :disabled="o.disabled"
-          :label="o.value">{{o.label}}</el-checkbox-button>
-      </template>
-      <template v-else>
-        <el-checkbox
-          v-for="o in item.options||ajaxOptions"
-          :key='o.value'
-          :disabled="o.disabled"
-          :label="o.value" :border="item.border">{{o.label}}</el-checkbox>
-      </template>
+      <component
+        :is="item.button?'el-checkbox-button':'el-checkbox'"
+        v-for="o in item.options||ajaxOptions"
+        :key='o.value'
+        :disabled="o.disabled"
+        :label="o.value" :border="item.border">{{o.label}}</component>
     </el-checkbox-group>
 
     <el-select v-else-if="item.type==='select'" v-bind="$attrs" v-on="$listeners" :multiple="item.multiple" :disabled="item.disabled" :multiple-limit="item.multipleLimit">

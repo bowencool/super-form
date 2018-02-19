@@ -1,5 +1,4 @@
 <template lang="pug">
-  <!-- todo functional -->
   el-form-item(:label="item.label")
     //- 文本
     el-input(
@@ -30,36 +29,24 @@
     el-radio-group(
       v-else-if="item.type==='radio'"
       :value="item.value")
-      template(v-if="item.button")
-        el-radio-button(
-          v-for="o in item.options"
-          :key='o.value'
-          :label="o.value"
-          disabled) {{o.label}}
-      template(v-else)
-        el-radio(
-          v-for="o in item.options"
-          :key='o.value'
-          :label="o.value"
-          :border="item.border"
-          disabled) {{o.label}}
+      component(
+        :is="item.button?'el-radio-button':'el-radio'"
+        v-for="o in item.options||ajaxOptions"
+        :key='o.value'
+        :label="o.value"
+        :border="item.border"
+        disabled) {{o.label}}
     //- 多选
     el-checkbox-group(
       v-else-if="item.type==='checkbox'"
       :value="item.value")
-      template(v-if="item.button")
-        el-checkbox-button(
-          v-for="o in item.options"
-          :key='o.value'
-          :label="o.value"
-          disabled) {{o.label}}
-      template(v-else)
-        el-checkbox(
-          v-for="o in item.options"
-          :key='o.value'
-          :label="o.value"
-          :border="item.border"
-          disabled) {{o.label}}
+      component(
+        :is="item.button?'el-checkbox-button':'el-checkbox'"
+        v-for="o in item.options||ajaxOptions"
+        :key='o.value'
+        :label="o.value"
+        :border="item.border"
+        disabled) {{o.label}}
     //- 下拉
     el-select(
       v-else-if="item.type==='select'"
@@ -105,5 +92,13 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      ajaxOptions: [{
+        value: '0',
+        label: '动态获取'
+      }]
+    }
+  }
 }
 </script>
