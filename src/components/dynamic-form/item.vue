@@ -52,7 +52,7 @@
       </el-option>
     </el-select>
 
-    <el-cascader v-else-if="item.type==='cascader'" v-bind="$attrs" v-on="$listeners" :options="item.options||require('element-china-area-data')[item.areaShortcut]" :filterable="item.filterable" :disabled="item.disabled" :clearable="true"></el-cascader>
+    <el-cascader v-else-if="item.type==='cascader'" v-bind="$attrs" v-on="$listeners" :options="item.options||require('element-china-area-data')[item.areaShortcut]||[]" :filterable="item.filterable" :disabled="item.disabled" :clearable="true"></el-cascader>
 
     <el-time-picker v-else-if="item.type==='time'" :is-range="item.isRange" range-separator="至" start-placeholder="开始时间" end-placeholder="结束时间" :value-format="item.valueFormat" :format="item.valueFormat" :placeholder="item.placeholder" v-bind="$attrs" v-on="$listeners"></el-time-picker>
 
@@ -64,20 +64,7 @@
 </template>
 
 <script>
-const request = (url, method, body) => fetch(url, {
-  method,
-  body: JSON.stringify(body),
-  headers: {
-    'Content-Type': 'application/json; charset=utf-8'
-  },
-})
-  .then(response => {
-    if (response.status >= 200 && response.status < 300) {
-      return response.json()
-    } else {
-      throw new Error(response.statusText)
-    }
-  })
+import request from '@/utils/request'
 
 export default {
   props: {
@@ -119,6 +106,17 @@ export default {
       })
 
       return R
+    }
+  },
+  created() {
+    const { optionsUrl, key } = this.item
+    if (optionsUrl) {
+      request(`${optionsUrl}?key=${key}`, 'GET')
+        .then(res => {
+          // this.item.options = res
+          this.$set(this.item, 'options', res)
+        })
+        .catch(console.log)
     }
   }
 }

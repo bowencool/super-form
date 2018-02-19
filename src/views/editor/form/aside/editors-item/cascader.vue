@@ -7,8 +7,10 @@
         el-input(:value="formItem.key" readonly)
       el-form-item(label="占位文本")
         el-input(v-model="formItem.placeholder")
-      el-form-item(label="默认值")
+      el-form-item(label="默认值" v-if="!formItem.optionsUrl")
         el-cascader(v-model="formItem.value" :options="formItem.options||require('element-china-area-data')[formItem.areaShortcut]" :clearable="true")
+      el-form-item(label="接口url")
+        el-input(v-model="formItem.optionsUrl")
       el-form-item(label="禁用")
         el-checkbox(v-model="formItem.disabled")
       //- el-form-item(label="可搜索") todo

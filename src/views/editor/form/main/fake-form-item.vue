@@ -88,7 +88,7 @@
     el-cascader(
       v-else-if="item.type==='cascader'"
       :disabled="true"
-      :options="item.options||require('element-china-area-data')[item.areaShortcut]"
+      :options="item.options||require('element-china-area-data')[item.areaShortcut]||[]"
       :placeholder="item.placeholder"
       :value="item.value"
     )

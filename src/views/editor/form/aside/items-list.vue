@@ -99,17 +99,24 @@
           @click="addItem('cascader', {areaShortcut:'regionData'}),popCascader = false"
           >省/市/区</el-button>
       </el-button-group>
+      <div>带“全部”选项：</div>
       <el-button-group>
         <el-button size="mini" type="primary" plain
           @click="addItem('cascader', {areaShortcut:'provinceAndCityDataPlus'}),popCascader = false"
-          >省/市(带"全部")</el-button>
+          >省/市</el-button>
         <el-button size="mini" type="primary" plain
           @click="addItem('cascader', {areaShortcut:'regionDataPlus'}),popCascader = false"
-          >省/市/区(带"全部")</el-button>
+          >省/市/区</el-button>
       </el-button-group>
-      <el-button size="mini" type="primary" plain
-        @click="$message('暂不支持')"
-        >自定义</el-button>
+      <div>其他：</div>
+      <el-button-group>
+        <el-button size="mini" type="primary" plain
+          @click="addItem('cascader',{optionsUrl:'/api/cascader/options'})"
+          >从服务器请求</el-button>
+        <el-button size="mini" type="primary" plain
+          @click="$message('暂不支持')"
+          >自定义</el-button>
+      </el-button-group>
     </el-popover>
     <el-tag class="item" v-popover:popcascader>
       <icon-svg icon="cascader" />

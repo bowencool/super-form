@@ -5,6 +5,8 @@
     el-button(@click='validate' :loading="loading" type="primary" :size="$store.state.forms.qry.size") 测试验证
     p 表单数据：
       pre {{hehe}}
+    p 表单配置：
+      pre {{$store.state.forms.qry}}
 </template>
 
 <script>

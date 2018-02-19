@@ -1,9 +1,6 @@
 <template>
   <el-form class="dynamic-form" :inline="dynamicForm.inline" :model="value" :label-position="dynamicForm.labelPosition" :label-width="dynamicForm.labelWidth" :size='dynamicForm.size' :status-icon="dynamicForm.statusIcon">
 
-    <!-- 这里一定不能用$attrs、$listeners, 因为这里要绑定key-->
-    <!-- 但是又不能修改value，因为value是props -->
-    <!-- 所以考虑拆分这里的v-model -->
     <dynamic-form-item
       v-for="item in dynamicForm.formItemList"
       :key="item.key"
@@ -19,6 +16,7 @@
 </template>
 
 <script>
+// import request from '@/utils/request'
 export default {
   props: {
     dynamicForm: {
@@ -42,12 +40,12 @@ export default {
       const formData = { ...this.value }
       // 设置默认值
       this.dynamicForm.formItemList.forEach(item => {
-        if (formData[item.key] === undefined || formData[item.key] === null) {
-          formData[item.key] = item.value
+        const { key, value } = item
+        if (formData[key] === undefined || formData[key] === null) {
+          formData[key] = value
         }
-        // if ((item.type === 'cascader' || (item.type === 'select' && item.multiple)) &&
-        //   (typeof formData[item.key] === 'string')) {
-        //   formData[item.key] = formData[item.value].split(',')
+        // if (optionsUrl) {
+        //   console.log(optionsUrl)
         // }
       })
       this.$emit('input', { ...formData })
@@ -56,15 +54,6 @@ export default {
   mounted() {
     this.setDefaultValue()
   },
-  // watch: {
-  //   dynamicForm(nnew, old) {
-  //     if (this.$refs.form) this.$refs.form.clearValidate()
-  //     old.formItemList.forEach(item => {
-  //       delete this.value[item.key]
-  //     })
-  //     this.setDefaultValue()
-  //   }
-  // }
 }
 </script>
 
