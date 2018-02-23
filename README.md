@@ -6,6 +6,8 @@
  ![draggable](./src/gifs/drag.gif)
 ## 实时编辑预览
  ![editable](./src/gifs/live.gif)
+## 从服务器获取 & 地区快捷配置 & 动态换肤
+ ![ajax](./src/gifs/ajax.gif)
 
 ## TODO
 - [x] 常用验证规则封装
