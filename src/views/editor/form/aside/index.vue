@@ -43,7 +43,7 @@
         p(v-else) 先选择一个组件
 
       el-tab-pane(label="全局配置" name="global-config")
-        dynamic-form(:dynamicForm="require('./editor-global.json')" v-model="currentForm")
+        dynamic-form(:form-config="require('./editor-global.json')" v-model="currentForm")
         //- todo 配置按钮
 
       el-tab-pane(label="查看JSON" name="source")

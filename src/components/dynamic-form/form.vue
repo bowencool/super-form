@@ -1,8 +1,8 @@
 <template>
-  <el-form class="dynamic-form" :inline="dynamicForm.inline" :model="value" :label-position="dynamicForm.labelPosition" :label-width="dynamicForm.labelWidth" :size='dynamicForm.size' :status-icon="dynamicForm.statusIcon">
+  <el-form class="dynamic-form" :inline="formConfig.inline" :model="value" :label-position="formConfig.labelPosition" :label-width="formConfig.labelWidth" :size='formConfig.size' :status-icon="formConfig.statusIcon">
 
     <dynamic-form-item
-      v-for="item in dynamicForm.formItemList"
+      v-for="item in formConfig.formItemList"
       :key="item.key"
       v-if="value[item.key]!==undefined"
       :item="item"
@@ -18,7 +18,7 @@
 <script>
 export default {
   props: {
-    dynamicForm: {
+    formConfig: {
       type: Object,
       required: true
     },
@@ -38,7 +38,7 @@ export default {
     setDefaultValue() {
       const formData = { ...this.value }
       // 设置默认值
-      this.dynamicForm.formItemList.forEach(item => {
+      this.formConfig.formItemList.forEach(item => {
         const { key, value } = item
         if (formData[key] === undefined || formData[key] === null) {
           formData[key] = value

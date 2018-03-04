@@ -1,11 +1,11 @@
 <template>
-  <el-form class="dynamic-form fake-form" :inline="dynamicForm.inline" :label-position="dynamicForm.labelPosition" :label-width="dynamicForm.labelWidth" :size='dynamicForm.size'>
+  <el-form class="dynamic-form fake-form" :inline="formConfig.inline" :label-position="formConfig.labelPosition" :label-width="formConfig.labelWidth" :size='formConfig.size'>
 
-    <draggable v-model="dynamicForm.formItemList">
+    <draggable v-model="formConfig.formItemList">
 
       <transition-group name="list-complete">
 
-        <div v-for="(item,i) in dynamicForm.formItemList" :key="item.key" class="draggable list-complete-item" :class="{'selected': $store.state.itemKey===item.key}" @click="select(item.key)">
+        <div v-for="(item,i) in formConfig.formItemList" :key="item.key" class="draggable list-complete-item" :class="{'selected': $store.state.itemKey===item.key}" @click="select(item.key)">
 
           <fake-form-item :item="item"></fake-form-item>
           <i class="el-icon-delete" @click.stop="deleteItem(i)"></i>
@@ -24,7 +24,7 @@ import FakeFormItem from './fake-form-item'
 export default {
   components: { FakeFormItem, Draggable },
   props: {
-    dynamicForm: {
+    formConfig: {
       type: Object,
       required: true
     },
@@ -34,7 +34,7 @@ export default {
       this.$store.commit('SELECT_ITEM', key)
     },
     deleteItem(i) {
-      this.dynamicForm.formItemList.splice(i, 1)
+      this.formConfig.formItemList.splice(i, 1)
     }
   },
 }

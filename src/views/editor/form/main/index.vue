@@ -1,6 +1,6 @@
 <template lang="pug">
   el-main
-    fake-form(:dynamicForm="currentForm")
+    fake-form(:form-config="currentForm")
     //- pre {{currentForm}}
 </template>
 
