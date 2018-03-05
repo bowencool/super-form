@@ -10,6 +10,7 @@
  ![ajax](./src/gifs/ajax.gif)
 
 ## TODO
+- [x] 封装`input-number`支持显示单位、控制小数位数
 - [x] 常用验证规则封装
 - [x] 为文本框配置`SQL`验证规则
 - [x] (单选多选等)`options`增删改
