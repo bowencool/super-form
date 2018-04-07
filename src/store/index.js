@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import forms from './modules/forms' // 顶部查询表单
+import form from './modules/form' // 表单
 
 Vue.use(Vuex)
 
@@ -20,8 +20,8 @@ const store = new Vuex.Store({
     }
   },
   modules: {
-    //todo 表格table 图表Chart
-    forms,
+    //todo 表格table
+    form,
   },
 })
 

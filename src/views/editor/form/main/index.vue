@@ -10,7 +10,7 @@ export default {
   components: { FakeForm },
   computed: {
     currentForm() {
-      return this.$store.state.forms[this.$route.params.fid]
+      return this.$store.state.form
     }
   }
 }

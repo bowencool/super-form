@@ -43,11 +43,11 @@
         p(v-else) 先选择一个组件
 
       el-tab-pane(label="全局配置" name="global-config")
-        dynamic-form(:form-config="require('./editor-global.json')" v-model="currentForm")
+        dynamic-form(:form-config="require('./editor-global.json')" v-model="formConfig")
         //- todo 配置按钮
 
       el-tab-pane(label="查看JSON" name="source")
-        pre {{currentForm}}
+        pre {{formConfig}}
 </template>
 
 <script>
@@ -85,26 +85,21 @@ export default {
         this.$store.commit('TOGGLE_ASIDE_ACTIVE', newV)
       }
     },
-    currentForm: {
+    formConfig: {
       get() {
-        return this.$store.state.forms[this.$route.params.fid]
+        return this.$store.state.form
       },
       set(newV) {
-        this.$store.commit('FORM_UPDATE_WITH_FID_G', { fid: this.$route.params.fid, newV })
+        this.$store.commit('UPDATE_FORM', newV)
       }
     },
     selectedItem() {
-      return this.currentForm.formItemList.find(item => item.key === this.$store.state.itemKey)
+      return this.formConfig.formItemList.find(item => item.key === this.$store.state.itemKey)
     },
-  },
-  data() {
-    return {
-      popInput: false,
-    }
   },
   methods: {
     addItem(item) {
-      this.currentForm.formItemList.push(item)
+      this.formConfig.formItemList.push(item)
       this.$store.commit('SELECT_ITEM', item.key)
     }
   }

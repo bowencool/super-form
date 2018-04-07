@@ -14,11 +14,11 @@ export default new Router({
   routes: [
     {
       path: '/editor',
-      redirect: '/editor/form/qry',
+      redirect: '/editor/form',
       component: Editor,
       children: [
         {
-          path: 'form/:fid',
+          path: 'form',
           components: {
             aside: EditorFormAside,
             main: EditorFormMain,
