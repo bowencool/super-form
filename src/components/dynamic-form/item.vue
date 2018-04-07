@@ -45,6 +45,8 @@
 
     <el-date-picker v-else-if="item.type==='date'" :type="item.subtype" range-separator="至" start-placeholder="开始时间" end-placeholder="结束时间" :value-format="item.valueFormat" :format="item.viewFormat||item.valueFormat" :placeholder="item.placeholder" v-bind="$attrs" v-on="$listeners" :disabled="item.disabled"></el-date-picker>
 
+    <richtext v-else-if="item.type==='richtext'" v-bind="$attrs" v-on="$listeners"></richtext>
+
     <span v-else>未知控件类型</span>
 
   </el-form-item>
@@ -52,8 +54,12 @@
 
 <script>
 import request from '@/utils/request'
+import Richtext from '@/components/tinymce'
 
 export default {
+  components: {
+    Richtext
+  },
   props: {
     item: {
       type: Object,

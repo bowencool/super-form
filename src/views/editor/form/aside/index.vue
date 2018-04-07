@@ -52,6 +52,7 @@
 
 <script>
 import ItemsList from './items-list'
+// todo 智能引入
 import EditorInput from './editors-item/input'
 import EditorNumber from './editors-item/number'
 import EditorSwitch from './editors-item/switch'
@@ -60,6 +61,7 @@ import EditorCheckbox from './editors-item/checkbox'
 import EditorSelect from './editors-item/select'
 import EditorDate from './editors-item/date'
 import EditorCascader from './editors-item/cascader'
+import EditorRichtext from './editors-item/richtext'
 
 export default {
   components: {
@@ -72,6 +74,7 @@ export default {
     EditorSelect,
     EditorDate,
     EditorCascader,
+    EditorRichtext,
   },
   computed: {
     activeName: {

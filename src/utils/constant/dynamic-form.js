@@ -98,6 +98,11 @@ export default {
       { "required": true, "type": 'array', "min": 1, "message": '请选择' },
     ],
   },
+  "richtext": {
+    "type": "richtext",
+    "label": "内容",
+    "value": '',
+  }
   // {
   //   "type": 'rate',
   //   "label": '评分',
