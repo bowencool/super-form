@@ -148,6 +148,11 @@
       <icon-svg icon="cascader" />
       <span>级联</span>
     </el-tag>
+    <!-- 富文本 -->
+    <el-tag class="item" @click.native="addItem('richtext')">
+      <icon-svg icon="richtext" />
+      <span>富文本</span>
+    </el-tag>
   </div>
 </template>
 

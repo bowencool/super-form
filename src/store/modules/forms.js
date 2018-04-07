@@ -1,9 +1,9 @@
 export default {
   state: {
     'qry': {
-      inline: true, // 是否使用inline排版
+      inline: false, // 是否使用inline排版
       labelPosition: 'right', // 标签对齐方式
-      labelWidth: '', // 标签宽度
+      labelWidth: '80px', // 标签宽度
       size: 'small', // 尺寸
       statusIcon: true, // 显示验证图标
       formItemList: []

@@ -2,9 +2,9 @@
   el-form-item(:label="item.label")
     //- 文本
     el-input(
-      v-if="item.type==='input'"
+      v-if="item.type==='input'||item.type==='richtext'"
       :disabled="true"
-      :type="item.subtype"
+      :type="item.subtype||'textarea'"
       :placeholder="item.placeholder"
       :autosize="item.autosize"
       :value="item.value")

@@ -6,7 +6,10 @@
 </template>
 
 <script>
-// todo 数据持久化
+/**
+ * 站在巨人的肩膀上○|￣|_
+ * https://github.com/PanJiaChen/vue-element-admin/blob/master/src/components/ThemePicker/index.vue
+ */
 const version = require('element-ui/package.json').version // element-ui version from node_modules
 const ORIGINAL_THEME = '#409EFF' // default color
 
