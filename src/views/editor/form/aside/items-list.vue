@@ -158,7 +158,7 @@
 
 <script>
   import guid from '@/utils/guid'
-  import DYNAMIC_FORM from '@/utils/constant/dynamic-form'
+  import AVAILABEL_FORM_ITEM_LIST from './availabel-item-list'
   export default {
     data() {
       return {
@@ -177,7 +177,7 @@
     methods: {
       addItem(type, option) {
         const key = guid()
-        const newItem = {...JSON.parse(JSON.stringify(DYNAMIC_FORM[type])), key, ...option}
+        const newItem = {...JSON.parse(JSON.stringify(AVAILABEL_FORM_ITEM_LIST[type])), key, ...option}
         this.$emit('add', newItem)
 
         this.popInput = false
