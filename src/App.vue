@@ -6,7 +6,6 @@
           <template slot="title">编辑器</template>
           <el-menu-item index="/editor/form">表单</el-menu-item>
           <el-menu-item index="/editor/table">表格</el-menu-item>
-          <!-- <el-menu-item index="/editor/form/edt">表单(编辑页)</el-menu-item> -->
         </el-submenu>
         <el-menu-item index="/preview">预览</el-menu-item>
       </el-menu>
