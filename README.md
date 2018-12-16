@@ -6,7 +6,7 @@
  ![draggable](./src/gifs/drag.gif)
 ## 实时编辑预览
  ![editable](./src/gifs/live.gif)
-## 从服务器获取 & 地区快捷配置 & 动态换肤
+## 从服务器获取 & 地区快捷配置
  ![ajax](./src/gifs/ajax.gif)
 
 ## TODO
@@ -19,7 +19,6 @@
 - [ ] 为下拉框配置`从服务器搜索`
 - [ ] 文件上传支持
 - [x] 富文本支持
-- [x] 动态换肤
 - [ ] 表格
 <!-- - [ ] 为options集成 `默认值` 功能 -->
 <!-- - [ ] 允许添加多条`RegExp`, `SQL`验证规则 -->
