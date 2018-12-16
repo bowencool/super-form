@@ -1,86 +1,70 @@
-'use strict'
-const utils = require('./utils')
-const webpack = require('webpack')
-const config = require('../config')
-const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base.conf')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const portfinder = require('portfinder')
-const apiMocker = require('webpack-api-mocker')
-const mocker = require('../mock')
+const { resolve } = require('./utils');
+const merge = require('webpack-merge');
+const webpack = require('webpack');
+const baseConfig = require('./webpack.base.conf');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const apiMocker = require('mocker-api');
 
-const HOST = process.env.HOST
-const PORT = process.env.PORT && Number(process.env.PORT)
-
-const devWebpackConfig = merge(baseWebpackConfig, {
+module.exports = merge(baseConfig, {
+  mode: 'development',
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    rules: [
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src'), resolve('test')],
+        options: {
+          // emitWarning: true,
+          cache: true,
+          formatter: require('eslint-friendly-formatter'),
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader',
+          'less-loader',
+        ],
+      },
+    ],
   },
-  // cheap-module-eval-source-map is faster for development
-  devtool: config.dev.devtool,
-
-  // these devServer options should be customized in /config/index.js
+  devtool: '#cheap-eval-source-map',
   devServer: {
-    clientLogLevel: 'warning',
-    historyApiFallback: true,
+    port: 9527,
     hot: true,
-    compress: true,
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
-    overlay: config.dev.errorOverlay
-      ? { warnings: false, errors: true }
-      : false,
-    publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
-    quiet: true, // necessary for FriendlyErrorsPlugin
-    before(app) {
-      apiMocker(app, mocker)
+    overlay: {
+      warnings: false,
+      errors: true,
     },
-    watchOptions: {
-      poll: config.dev.poll,
-    }
+    before(app) {
+      apiMocker(app, resolve('mock/index.js'))
+    },
+    stats: {
+      entrypoints: false,
+      children: false,
+      modules: false,
+      assets: false,
+      version: false,
+      builtAt: false,
+    },
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': require('../config/dev.env')
+    new HtmlWebpackPlugin({
+      template: resolve('index.html'),
+      favicon: resolve('favicon.ico'),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-    new webpack.NoEmitOnErrorsPlugin(),
-    // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      favicon: 'favicon.ico',
-      inject: true
+    new StyleLintPlugin({
+      configFile: resolve('.stylelintrc'),
+      files: '**/*.{less,vue}',
     }),
-  ]
-})
-
-module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = process.env.PORT || config.dev.port
-  portfinder.getPort((err, port) => {
-    if (err) {
-      reject(err)
-    } else {
-      // publish the new Port, necessary for e2e tests
-      process.env.PORT = port
-      // add port to devServer config
-      devWebpackConfig.devServer.port = port
-
-      // Add FriendlyErrorsPlugin
-      devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
-        compilationSuccessInfo: {
-          messages: [`Your application is running here: http://localhost:${port}`],
-        },
-        onErrors: config.dev.notifyOnErrors
-          ? utils.createNotifierCallback()
-          : undefined
-      }))
-
-      resolve(devWebpackConfig)
-    }
-  })
-})
+  ],
+});

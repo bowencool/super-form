@@ -27,14 +27,15 @@
 </template>
 
 <script>
-import EditorRules from '../editor-rules'
+import EditorRules from '../editor-rules';
+
 export default {
   components: { EditorRules },
   props: {
     formItem: {
       type: Object,
       required: true,
-    }
+    },
   },
-}
+};
 </script>

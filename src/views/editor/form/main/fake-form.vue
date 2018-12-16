@@ -1,14 +1,29 @@
 <template>
-  <el-form class="dynamic-form fake-form" :inline="formConfig.inline" :label-position="formConfig.labelPosition" :label-width="formConfig.labelWidth" :size='formConfig.size'>
+  <el-form
+    :inline="formConfig.inline"
+    :label-position="formConfig.labelPosition"
+    :label-width="formConfig.labelWidth"
+    :size="formConfig.size"
+    class="dynamic-form fake-form"
+  >
 
     <draggable v-model="formConfig.formItemList">
 
       <transition-group name="list-complete">
 
-        <div v-for="(item,i) in formConfig.formItemList" :key="item.key" class="draggable list-complete-item" :class="{'selected': $store.state.itemKey===item.key}" @click="select(item.key)">
+        <div
+          v-for="(item,i) in formConfig.formItemList"
+          :key="item.key"
+          :class="{'selected': $store.state.itemKey===item.key}"
+          class="draggable list-complete-item"
+          @click="select(item.key)"
+        >
 
           <fake-form-item :item="item"></fake-form-item>
-          <i class="el-icon-delete" @click.stop="deleteItem(i)"></i>
+          <i
+            class="el-icon-delete"
+            @click.stop="deleteItem(i)"
+          ></i>
 
         </div>
       </transition-group>
@@ -19,25 +34,26 @@
 </template>
 
 <script>
-import Draggable from 'vuedraggable'
-import FakeFormItem from './fake-form-item'
+import Draggable from 'vuedraggable';
+import FakeFormItem from './fake-form-item';
+
 export default {
   components: { FakeFormItem, Draggable },
   props: {
     formConfig: {
       type: Object,
-      required: true
+      required: true,
     },
   },
   methods: {
     select(key) {
-      this.$store.commit('SELECT_ITEM', key)
+      this.$store.commit('SELECT_ITEM', key);
     },
     deleteItem(i) {
-      this.formConfig.formItemList.splice(i, 1)
-    }
+      this.formConfig.formItemList.splice(i, 1);
+    },
   },
-}
+};
 </script>
 
 <style lang="less">
@@ -47,7 +63,7 @@ export default {
     padding: 5px 10px 0 5px;
     cursor: move;
 
-    i[class^="el-icon"] {
+    i[class^='el-icon'] {
       display: none;
       position: absolute;
       right: 3px;
@@ -57,7 +73,7 @@ export default {
     }
 
     &:hover {
-      i[class^="el-icon"] {
+      i[class^='el-icon'] {
         display: inline;
       }
     }
@@ -86,7 +102,8 @@ export default {
   transition: all 1s;
 }
 
-.list-complete-enter, .list-complete-leave-active {
+.list-complete-enter,
+.list-complete-leave-active {
   opacity: 0;
 }
 </style>

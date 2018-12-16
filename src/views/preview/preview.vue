@@ -10,27 +10,31 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
+
 export default {
   data() {
     return {
       hehe: {},
       loading: false,
-    }
+    };
   },
   computed: {
-    ...mapState([
-      'form',
-    ]),
+    ...mapState(['form']),
   },
   methods: {
     validate() {
-      this.loading = true
-      const form = this.$refs['form-preview'].$children[0]
-      form.validate()
-        .then(() => { this.loading = false })
-        .catch(() => { this.loading = false })
-    }
-  }
-}
+      this.loading = true;
+      const form = this.$refs['form-preview'].$children[0];
+      form
+        .validate()
+        .then(() => {
+          this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
+        });
+    },
+  },
+};
 </script>

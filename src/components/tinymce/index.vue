@@ -1,178 +1,89 @@
 <template>
-  <div class="tinymce-container editor-container">
-    <textarea class="tinymce-textarea" :id="tinymceId"></textarea>
-    <div class="editor-custom-btn-container">
-      <editorImage color="#1890ff" class="editor-upload-btn" @successCBK="imageSuccessCBK"></editorImage>
-    </div>
-  </div>
+  <textarea :id="id"></textarea>
 </template>
 
 <script>
-/**
- * 站在巨人的肩膀上○|￣|_
- * https://github.com/PanJiaChen/vue-element-admin/blob/master/src/components/Tinymce/index.vue
- */
-import editorImage from './components/editorImage'
-import plugins from './plugins'
-import toolbar from './toolbar'
+import getTinymce from './init';
+// const tinymce = window.tinymce;
 
 export default {
-  name: 'tinymce',
-  components: { editorImage },
   props: {
     id: {
-      type: String
-    },
-    value: {
       type: String,
-      default: ''
-    },
-    toolbar: {
-      type: Array,
-      required: false,
-      default() {
-        return toolbar
-      }
-    },
-    menubar: {
-      default: 'file edit insert view format table'
+      default: () => `tinymce-${Date.now()}`,
     },
     height: {
       type: Number,
-      required: false,
-      default: 360
-    }
-  },
-  data() {
-    return {
-      hasChange: false,
-      hasInit: false,
-      tinymceId: this.id || 'vue-tinymce-' + +new Date()
-    }
+      default: () => 360,
+    },
+    toolbar: {
+      type: Array,
+      default: () => [
+        'undo redo removeformat preview code fullscreen ',
+        'alignleft aligncenter alignright outdent indent | hr bullist numlist template link picpool charmap table',
+        'formatselect bold italic underline strikethrough forecolor backcolor blockquote  subscript superscript ',
+      ],
+    },
+    plugins: {
+      type: Array,
+      default: () => [
+        'advlist anchor autolink autoresize autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime legacyoutput link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table textcolor textpattern visualblocks visualchars wordcount',
+      ],
+    },
+    value: String,
   },
   watch: {
-    value(val) {
-      if (!this.hasChange && this.hasInit) {
-        this.$nextTick(() => window.tinymce.get(this.tinymceId).setContent(val))
-      }
-    }
-  },
-  mounted() {
-    this.initTinymce()
-  },
-  activated() {
-    this.initTinymce()
-  },
-  deactivated() {
-    this.destroyTinymce()
-  },
-  methods: {
-    initTinymce() {
-      const _this = this
-      window.tinymce.init({
-        selector: `#${this.tinymceId}`,
-        height: this.height,
-        body_class: 'panel-body ',
-        object_resizing: false,
-        toolbar: this.toolbar,
-        menubar: this.menubar,
-        plugins,
-        end_container_on_empty_block: true,
-        powerpaste_word_import: 'clean',
-        code_dialog_height: 450,
-        code_dialog_width: 1000,
-        advlist_bullet_styles: 'square',
-        advlist_number_styles: 'default',
-        imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
-        default_link_target: '_blank',
-        link_title: false,
-        init_instance_callback: editor => {
-          if (_this.value) {
-            editor.setContent(_this.value)
-          }
-          _this.hasInit = true
-          editor.on('NodeChange Change KeyUp SetContent', () => {
-            this.hasChange = true
-            this.$emit('input', editor.getContent())
-          })
-        }
-        // 整合七牛上传
-        // images_dataimg_filter(img) {
-        //   setTimeout(() => {
-        //     const $image = $(img);
-        //     $image.removeAttr('width');
-        //     $image.removeAttr('height');
-        //     if ($image[0].height && $image[0].width) {
-        //       $image.attr('data-wscntype', 'image');
-        //       $image.attr('data-wscnh', $image[0].height);
-        //       $image.attr('data-wscnw', $image[0].width);
-        //       $image.addClass('wscnph');
-        //     }
-        //   }, 0);
-        //   return img
-        // },
-        // images_upload_handler(blobInfo, success, failure, progress) {
-        //   progress(0);
-        //   const token = _this.$store.getters.token;
-        //   getToken(token).then(response => {
-        //     const url = response.data.qiniu_url;
-        //     const formData = new FormData();
-        //     formData.append('token', response.data.qiniu_token);
-        //     formData.append('key', response.data.qiniu_key);
-        //     formData.append('file', blobInfo.blob(), url);
-        //     upload(formData).then(() => {
-        //       success(url);
-        //       progress(100);
-        //     })
-        //   }).catch(err => {
-        //     failure('出现未知问题，刷新页面，或者联系程序员')
-        //     console.log(err);
-        //   });
-        // },
-      })
-    },
-    destroyTinymce() {
-      if (window.tinymce.get(this.tinymceId)) {
-        window.tinymce.get(this.tinymceId).destroy()
+    value(v) {
+      if (this.editor && this.editor.getContent() !== v) {
+        this.editor.setContent(v);
       }
     },
-    setContent(value) {
-      window.tinymce.get(this.tinymceId).setContent(value)
-    },
-    getContent() {
-      window.tinymce.get(this.tinymceId).getContent()
-    },
-    imageSuccessCBK(arr) {
-      const _this = this
-      arr.forEach(v => {
-        window.tinymce.get(_this.tinymceId).insertContent(`<img class="wscnph" src="${v.url}" >`)
-      })
-    }
   },
-  destroyed() {
-    this.destroyTinymce()
-  }
-}
-</script>
+  async mounted() {
+    const tinymce = await getTinymce();
+    tinymce.init({
+      target: this.$el,
+      height: this.height,
+      toolbar: this.toolbar,
+      plugins: this.plugins,
+      menubar: false,
+      branding: false,
+      object_resizing: false,
+      end_container_on_empty_block: true,
+      powerpaste_word_import: 'clean',
+      code_dialog_height: 450,
+      code_dialog_width: 1000,
+      advlist_bullet_styles: 'square',
+      advlist_number_styles: 'default',
+      imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
+      default_link_target: '_blank',
+      link_title: false,
+      init_instance_callback: editor => {
+        this.editor = editor;
 
-<style scoped>
-.tinymce-container {
-  position: relative;
-}
-.tinymce-container>>>.mce-fullscreen {
-  z-index: 10000;
-}
-.tinymce-textarea {
-  visibility: hidden;
-  z-index: -1;
-}
-.editor-custom-btn-container {
-  position: absolute;
-  right: 4px;
-  top: 4px;
-  /*z-index: 2005;*/
-}
-.editor-upload-btn {
-  display: inline-block;
-}
-</style>
+        editor.on('NodeChange Change KeyUp', () => {
+          const content = editor.getContent();
+          this.$emit('input', content);
+        });
+
+        editor.setContent(this.value);
+      },
+      setup: editor => {
+        editor.addButton('picpool', {
+          icon: 'image',
+          title: '自定义上传函数',
+          onclick: () => {
+            const rez = ['http://via.placeholder.com/350x150'];
+            editor.insertContent(rez.map(src => `<img src=${src} />`).join(''));
+          },
+        });
+      },
+    });
+  },
+  async beforeDestroy() {
+    const tinymce = await getTinymce();
+    tinymce.remove(this.editor);
+    console.log('removed.');
+  },
+};
+</script>

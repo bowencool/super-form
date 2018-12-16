@@ -1,7 +1,15 @@
 <template>
   <el-container id="app">
     <el-header>
-      <el-menu mode="horizontal" :default-active="$route.path" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" router :show-timeout="0">
+      <el-menu
+        :default-active="$route.path"
+        :show-timeout="0"
+        mode="horizontal"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+        router
+      >
         <el-submenu index="/editor">
           <template slot="title">编辑器</template>
           <el-menu-item index="/editor/form">表单</el-menu-item>
@@ -9,17 +17,18 @@
         </el-submenu>
         <el-menu-item index="/preview">预览</el-menu-item>
       </el-menu>
-      <theme-picker id="theme-picker"/>
+      <theme-picker id="theme-picker" ></theme-picker>
     </el-header>
-    <router-view/>
+    <router-view ></router-view>
   </el-container>
 </template>
 
 <script>
-import ThemePicker from '@/components/themePicker'
+import ThemePicker from '@/components/themePicker';
+
 export default {
-  components: { ThemePicker }
-}
+  components: { ThemePicker },
+};
 </script>
 
 <style lang="less">
@@ -31,7 +40,7 @@ body,
   height: 100%;
 }
 .el-header {
-  padding: 0!important;
+  padding: 0 !important;
 }
 .text-center {
   text-align: center;

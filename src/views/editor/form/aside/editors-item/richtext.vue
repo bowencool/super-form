@@ -30,7 +30,7 @@ export default {
     formItem: {
       type: Object,
       required: true,
-    }
+    },
   },
-}
+};
 </script>

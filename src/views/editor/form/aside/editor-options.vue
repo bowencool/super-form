@@ -83,41 +83,6 @@
 
 <script>
 export default {
-  methods: {
-    handlePreAdd() {
-      this.editingOpt = { value: '', label: '', disabled: false }
-      this.editingIdx = -2
-    },
-    handlePreEdit(i, opt) {
-      this.editingIdx = i
-      this.editingOpt = { ...opt }
-    },
-    handleSave(i) {
-      this.$set(this.itemOptions, i, { ...this.editingOpt })
-      this.editingIdx = -1
-    }
-  },
-  data() {
-    return {
-      editingIdx: -1, // 当前正在编辑的选项索引, -1没有正在编辑的, -2正在"新增"
-      editingOpt: {
-        'value': '',
-        'label': '',
-        'disabled': false,
-      }
-    }
-  },
-  // computed: {
-  //   defaultValue: {
-  //     get() {
-  //       console.log(this.value)
-  //       return this.value
-  //     },
-  //     set(newV) {
-  //       this.$emit('input', newV)
-  //     }
-  //   }
-  // },
   props: {
     itemOptions: {
       type: Array,
@@ -132,6 +97,41 @@ export default {
     //   // 默认值
     //   required: true
     // }
-  }
-}
+  },
+  data() {
+    return {
+      editingIdx: -1, // 当前正在编辑的选项索引, -1没有正在编辑的, -2正在"新增"
+      editingOpt: {
+        value: '',
+        label: '',
+        disabled: false,
+      },
+    };
+  },
+  methods: {
+    handlePreAdd() {
+      this.editingOpt = { value: '', label: '', disabled: false };
+      this.editingIdx = -2;
+    },
+    handlePreEdit(i, opt) {
+      this.editingIdx = i;
+      this.editingOpt = { ...opt };
+    },
+    handleSave(i) {
+      this.$set(this.itemOptions, i, { ...this.editingOpt });
+      this.editingIdx = -1;
+    },
+  },
+  // computed: {
+  //   defaultValue: {
+  //     get() {
+  //       console.log(this.value)
+  //       return this.value
+  //     },
+  //     set(newV) {
+  //       this.$emit('input', newV)
+  //     }
+  //   }
+  // },
+};
 </script>
