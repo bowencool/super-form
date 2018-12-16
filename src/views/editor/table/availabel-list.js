@@ -6,12 +6,14 @@ export default {
   // size: 'medium', // 表格尺寸, 可选值: 不填 / 'medium' / 'small' / 'mini'
   fit: false, // 列的宽度是否自撑开
   maxHeight: '650', // 最大高度, 内容过多出现滚动条(用来固定表头)
-  pagination: { // 分页配置
+  pagination: {
+    // 分页配置
     pageSize: 10, // 默认尺寸
     pageSizes: [10, 20, 50, 100], // 可选尺寸
-    layout: 'total, sizes, prev, pager, next, jumper' //默认布局
+    layout: 'total, sizes, prev, pager, next, jumper', //默认布局
   },
-  columns: [ // 列
+  columns: [
+    // 列
     {
       key: 'id', // 字段名, 必要
       label: '编号', // 显示的标签, 必要
@@ -45,20 +47,13 @@ export default {
       label: '邮箱',
       minWidth: '220',
     },
-    { key: 'name',
-      label: '审核人',
-      minWidth: '70',
-    },
-    { key: 'date',
-      label: '日期',
-      sortable: true,
-      minWidth: '100',
-    },
+    { key: 'name', label: '审核人', minWidth: '70' },
+    { key: 'date', label: '日期', sortable: true, minWidth: '100' },
     {
       key: 'desc',
       label: '描述',
       minWidth: '200',
-      showOverflowTooltip: true
+      showOverflowTooltip: true,
     },
-  ]
-}
+  ],
+};

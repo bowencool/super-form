@@ -89,16 +89,18 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      ajaxOptions: [{
-        value: '0',
-        label: '动态获取'
-      }]
-    }
-  }
-}
+      ajaxOptions: [
+        {
+          value: '0',
+          label: '动态获取',
+        },
+      ],
+    };
+  },
+};
 </script>

@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import form from './modules/form' // 表单
+import Vue from 'vue';
+import Vuex from 'vuex';
+import form from './modules/form'; // 表单
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
@@ -11,18 +11,18 @@ const store = new Vuex.Store({
   },
   mutations: {
     SELECT_ITEM(state, newKey) {
-      state.itemKey = newKey
+      state.itemKey = newKey;
       // 只要itemKey变化, 就切换至'组件配置'页
-      state.asideActiveName = 'item-config'
+      state.asideActiveName = 'item-config';
     },
     TOGGLE_ASIDE_ACTIVE(state, newName) {
-      state.asideActiveName = newName
-    }
+      state.asideActiveName = newName;
+    },
   },
   modules: {
-    //todo 表格table
+    // todo 表格table
     form,
   },
-})
+});
 
-export default store
+export default store;

@@ -10,7 +10,7 @@
     text-align: center;
     margin: 5px;
     .icon-svg,
-    [class^=el-icon] {
+    [class^='el-icon'] {
       width: 1.3em;
       height: 1.3em;
     }
@@ -51,17 +51,17 @@
 </template>
 
 <script>
-import ItemsList from './items-list'
+import ItemsList from './items-list';
 // todo 智能引入
-import EditorInput from './editors-item/input'
-import EditorNumber from './editors-item/number'
-import EditorSwitch from './editors-item/switch'
-import EditorRadio from './editors-item/radio'
-import EditorCheckbox from './editors-item/checkbox'
-import EditorSelect from './editors-item/select'
-import EditorDate from './editors-item/date'
-import EditorCascader from './editors-item/cascader'
-import EditorRichtext from './editors-item/richtext'
+import EditorInput from './editors-item/input';
+import EditorNumber from './editors-item/number';
+import EditorSwitch from './editors-item/switch';
+import EditorRadio from './editors-item/radio';
+import EditorCheckbox from './editors-item/checkbox';
+import EditorSelect from './editors-item/select';
+import EditorDate from './editors-item/date';
+import EditorCascader from './editors-item/cascader';
+import EditorRichtext from './editors-item/richtext';
 
 export default {
   components: {
@@ -79,29 +79,31 @@ export default {
   computed: {
     activeName: {
       get() {
-        return this.$store.state.asideActiveName
+        return this.$store.state.asideActiveName;
       },
       set(newV) {
-        this.$store.commit('TOGGLE_ASIDE_ACTIVE', newV)
-      }
+        this.$store.commit('TOGGLE_ASIDE_ACTIVE', newV);
+      },
     },
     formConfig: {
       get() {
-        return this.$store.state.form
+        return this.$store.state.form;
       },
       set(newV) {
-        this.$store.commit('UPDATE_FORM', newV)
-      }
+        this.$store.commit('UPDATE_FORM', newV);
+      },
     },
     selectedItem() {
-      return this.formConfig.formItemList.find(item => item.key === this.$store.state.itemKey)
+      return this.formConfig.formItemList.find(
+        item => item.key === this.$store.state.itemKey,
+      );
     },
   },
   methods: {
     addItem(item) {
-      this.formConfig.formItemList.push(item)
-      this.$store.commit('SELECT_ITEM', item.key)
-    }
-  }
-}
+      this.formConfig.formItemList.push(item);
+      this.$store.commit('SELECT_ITEM', item.key);
+    },
+  },
+};
 </script>

@@ -5,11 +5,11 @@ export default {
     labelWidth: '80px', // 标签宽度
     size: 'small', // 尺寸
     statusIcon: true, // 显示验证图标
-    formItemList: []
+    formItemList: [],
   },
   mutations: {
     UPDATE_FORM(state, payload) {
-      Object.assign(state, payload)
-    }
+      Object.assign(state, payload);
+    },
   },
-}
+};

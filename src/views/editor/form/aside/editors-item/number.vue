@@ -32,13 +32,13 @@ export default {
     formItem: {
       type: Object,
       required: true,
-    }
+    },
   },
   methods: {
     handleDecimal(boo) {
-      this.formItem.decimal1 = boo ? 0 : null
+      this.formItem.decimal1 = boo ? 0 : null;
       // this.formItem.decimal1 = boo ? 0 : NaN // wtf?
-    }
-  }
-}
+    },
+  },
+};
 </script>

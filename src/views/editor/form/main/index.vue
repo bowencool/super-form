@@ -5,13 +5,14 @@
 </template>
 
 <script>
-import FakeForm from './fake-form'
+import FakeForm from './fake-form';
+
 export default {
   components: { FakeForm },
   computed: {
     currentForm() {
-      return this.$store.state.form
-    }
-  }
-}
+      return this.$store.state.form;
+    },
+  },
+};
 </script>

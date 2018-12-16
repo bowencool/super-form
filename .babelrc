@@ -1,12 +1,24 @@
 {
   "presets": [
-    ["env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "not ie <= 10"]
+        }
       }
-    }],
-    "stage-2"
+    ]
   ],
-  "plugins": ["transform-vue-jsx", "transform-runtime"]
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-vue-jsx",
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ],
+    // ["import", { "libraryName": "ant-design-vue", "libraryDirectory": "es" }]
+  ]
 }

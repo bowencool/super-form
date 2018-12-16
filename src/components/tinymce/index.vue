@@ -1,8 +1,15 @@
 <template>
   <div class="tinymce-container editor-container">
-    <textarea class="tinymce-textarea" :id="tinymceId"></textarea>
+    <textarea
+      :id="tinymceId"
+      class="tinymce-textarea"
+    ></textarea>
     <div class="editor-custom-btn-container">
-      <editorImage color="#1890ff" class="editor-upload-btn" @successCBK="imageSuccessCBK"></editorImage>
+      <editorImage
+        color="#1890ff"
+        class="editor-upload-btn"
+        @successCBK="imageSuccessCBK"
+      ></editorImage>
     </div>
   </div>
 </template>
@@ -12,63 +19,67 @@
  * 站在巨人的肩膀上○|￣|_
  * https://github.com/PanJiaChen/vue-element-admin/blob/master/src/components/Tinymce/index.vue
  */
-import editorImage from './components/editorImage'
-import plugins from './plugins'
-import toolbar from './toolbar'
+import editorImage from './components/editorImage';
+import plugins from './plugins';
+import toolbar from './toolbar';
 
 export default {
   name: 'tinymce',
   components: { editorImage },
   props: {
     id: {
-      type: String
+      type: String,
     },
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     toolbar: {
       type: Array,
       required: false,
       default() {
-        return toolbar
-      }
+        return toolbar;
+      },
     },
     menubar: {
-      default: 'file edit insert view format table'
+      type: String,
+      default: 'file edit insert view format table',
     },
     height: {
       type: Number,
       required: false,
-      default: 360
-    }
+      default: 360,
+    },
   },
   data() {
     return {
       hasChange: false,
       hasInit: false,
-      tinymceId: this.id || 'vue-tinymce-' + +new Date()
-    }
+      tinymceId: this.id || `vue-tinymce-${+new Date()}`,
+    };
   },
   watch: {
     value(val) {
       if (!this.hasChange && this.hasInit) {
-        this.$nextTick(() => window.tinymce.get(this.tinymceId).setContent(val))
+        this.$nextTick(() => window.tinymce.get(this.tinymceId).setContent(val));
       }
-    }
+    },
   },
   mounted() {
-    this.initTinymce()
+    this.initTinymce();
   },
   activated() {
-    this.initTinymce()
+    this.initTinymce();
   },
   deactivated() {
-    this.destroyTinymce()
+    this.destroyTinymce();
+  },
+  destroyed() {
+    this.destroyTinymce();
   },
   methods: {
     initTinymce() {
-      const _this = this
+      const _this = this;
       window.tinymce.init({
         selector: `#${this.tinymceId}`,
         height: this.height,
@@ -88,14 +99,14 @@ export default {
         link_title: false,
         init_instance_callback: editor => {
           if (_this.value) {
-            editor.setContent(_this.value)
+            editor.setContent(_this.value);
           }
-          _this.hasInit = true
+          _this.hasInit = true;
           editor.on('NodeChange Change KeyUp SetContent', () => {
-            this.hasChange = true
-            this.$emit('input', editor.getContent())
-          })
-        }
+            this.hasChange = true;
+            this.$emit('input', editor.getContent());
+          });
+        },
         // 整合七牛上传
         // images_dataimg_filter(img) {
         //   setTimeout(() => {
@@ -129,37 +140,36 @@ export default {
         //     console.log(err);
         //   });
         // },
-      })
+      });
     },
     destroyTinymce() {
       if (window.tinymce.get(this.tinymceId)) {
-        window.tinymce.get(this.tinymceId).destroy()
+        window.tinymce.get(this.tinymceId).destroy();
       }
     },
     setContent(value) {
-      window.tinymce.get(this.tinymceId).setContent(value)
+      window.tinymce.get(this.tinymceId).setContent(value);
     },
     getContent() {
-      window.tinymce.get(this.tinymceId).getContent()
+      window.tinymce.get(this.tinymceId).getContent();
     },
     imageSuccessCBK(arr) {
-      const _this = this
+      const _this = this;
       arr.forEach(v => {
-        window.tinymce.get(_this.tinymceId).insertContent(`<img class="wscnph" src="${v.url}" >`)
-      })
-    }
+        window.tinymce
+          .get(_this.tinymceId)
+          .insertContent(`<img class="wscnph" src="${v.url}" >`);
+      });
+    },
   },
-  destroyed() {
-    this.destroyTinymce()
-  }
-}
+};
 </script>
 
 <style scoped>
 .tinymce-container {
   position: relative;
 }
-.tinymce-container>>>.mce-fullscreen {
+.tinymce-container >>> .mce-fullscreen {
   z-index: 10000;
 }
 .tinymce-textarea {
@@ -170,7 +180,7 @@ export default {
   position: absolute;
   right: 4px;
   top: 4px;
-  /*z-index: 2005;*/
+  /* z-index: 2005; */
 }
 .editor-upload-btn {
   display: inline-block;

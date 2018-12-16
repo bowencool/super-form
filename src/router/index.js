@@ -1,16 +1,16 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Preview from '@/views/preview/preview'
-import Editor from '@/views/editor'
-import EditorFormAside from '@/views/editor/form/aside'
-import EditorFormMain from '@/views/editor/form/main'
-import EditorTableAside from '@/views/editor/table/aside'
-import EditorTableMain from '@/views/editor/table/main'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Preview from '@/views/preview/preview';
+import Editor from '@/views/editor';
+import EditorFormAside from '@/views/editor/form/aside';
+import EditorFormMain from '@/views/editor/form/main';
+import EditorTableAside from '@/views/editor/table/aside';
+import EditorTableMain from '@/views/editor/table/main';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/editor',
@@ -39,7 +39,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/editor'
+      redirect: '/editor',
     },
-  ]
-})
+  ],
+});

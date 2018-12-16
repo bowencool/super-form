@@ -23,15 +23,16 @@
 </template>
 
 <script>
-import EditorRules from '../editor-rules'
-import EditorOptions from '../editor-options'
+import EditorRules from '../editor-rules';
+import EditorOptions from '../editor-options';
+
 export default {
   components: { EditorRules, EditorOptions },
   props: {
     formItem: {
       type: Object,
       required: true,
-    }
+    },
   },
-}
+};
 </script>
