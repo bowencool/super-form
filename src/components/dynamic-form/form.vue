@@ -1,11 +1,7 @@
 <template>
   <el-form
-    :inline="formConfig.inline"
     :model="value"
-    :label-position="formConfig.labelPosition"
-    :label-width="formConfig.labelWidth"
-    :size="formConfig.size"
-    :status-icon="formConfig.statusIcon"
+    v-bind="formConfig"
     class="dynamic-form"
   >
 
@@ -19,7 +15,7 @@
       @input="handleInput($event, item.key)"
     ></dynamic-form-item>
 
-    <slot ></slot>
+    <slot></slot>
 
   </el-form>
 </template>
