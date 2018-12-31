@@ -10,6 +10,7 @@
       v-if="value[item.key]!==undefined"
       :key="item.key"
       :item="item"
+      v-bind="item"
       :value="value[item.key]"
       :style="{'min-width':columnMinWidth}"
       @input="handleInput($event, item.key)"

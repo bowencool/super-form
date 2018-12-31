@@ -10,7 +10,7 @@
       el-form-item(label="默认值")
         el-input(v-model="formItem.value" :type="formItem.subtype")
       el-form-item(label="禁用")
-        el-switch(v-model="formItem.disable")
+        el-switch(v-model="formItem.disabled")
       el-form-item(label="只读")
         el-switch(v-model="formItem.readonly")
 

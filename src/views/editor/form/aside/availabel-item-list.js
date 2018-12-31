@@ -4,7 +4,7 @@ export default {
     "type": 'input', // 必要, String
     // "subtype": 'text',
     "label": '文本', // 必要, String
-    "disable": false, //禁用, Boolean
+    "disabled": false, //禁用, Boolean
     "readonly": false, //只读, Boolean
     // "block": true, //独占一行, Boolean, 如果选项太长也会自动换行
     "value": '', // 默认值
